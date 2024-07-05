@@ -1,0 +1,191 @@
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+.panel-title {
+    font-size: 18px;
+}
+.cover {
+    width: 100%;
+    object-fit: cover;
+    /* margin: 0 auto; */
+}
+
+.samples-panel-menu {
+    background: #000000;
+}
+.samples-panel-left {
+    /*background: #2e4659;
+    margin-bottom: 20px;*/
+    padding: 20px;
+}
+.samples-panel-right {
+    /*background: #223748;*/
+    padding-bottom: 40px;
+}
+
+.marbot {
+    margin-bottom: 30px;
+}
+
+body {
+    font-family: Raleway, arial, helvetica; /* Muli:200,300|Raleway:300,400 */
+    font-size: 15px;
+    font-weight: 300;
+}
+h2, h3 {color: #f99404}
+.bg1 {
+    background-color: #004e88;
+}
+.bg2 {
+    background-color: #768a76; /*#2B6F2B, #014b01*/
+	color: #FFFFFF;
+}
+.bg3 {
+    background-color: #e3a603;
+	color: #000;
+}
+.bg4 {
+    background-color: #ad2227;
+	color: #fff;
+}
+.bg5 {
+    background-color: #000000;
+	color: #5AA0D3;
+}
+.bg6 {
+    background-color: #53909F;
+	color: #FFFFFF;
+}
+
+.bg7 {
+    background-color: #F3C148;/*F9AE04*/
+	color: #333333;
+}
+
+.bg6 h2 {
+	color: #0E333C;
+}
+.bg2 h2, .bg7 h2 {
+	color: #333333;
+}
+h1, h2, h3, h4, h5 {
+	text-shadow: none;
+}
+h4, h5 {
+	color: #7DDEED;
+}
+h4 a, h5 a {
+	color: #7DDEED;
+}
+h4 {
+	margin: 16px 0 3px;
+}
+.pageTitle1 {
+	color:#CCCCCC;
+	text-transform: capitalize;
+}
+.sectionTitle1 {
+	color:#7CB2BF;
+	text-transform: capitalize;
+	font-size:1.1em;
+	font-weight: bold;
+}
+.modal-dialog {
+    width: 800px;
+    z-index: 1060;
+}
+.panel-title {
+    color: #A1B9B4;
+}.alt1 {
+	background-color: #232323; 
+	padding:20px 0;
+	margin: 20px 0;
+}
+footer h3 {
+	color: #A1B9B4;
+}
+.botMargin {
+	margin-bottom:20px;
+}
+/* Bootstrap 4alpha styles
+.card {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    background-color: #transparent;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+.card-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #000000;
+    border-bottom: 1px solid #666666;
+}
+.card-block {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+*/
+/* ==========================================================================
+   Slate Overrides
+   ========================================================================== */
+.font-lg {
+    font-size: 1.1em;
+    line-height: 1.4;
+}
+a {
+    color: #f99404;
+}
+.navbar-brand {
+	font-size: 2.5em;
+}
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    color: #375a7f;
+    background-color: transparent;
+}
+.navbar-default .navbar-brand {
+    font-size: 2.5em;
+    line-height: 20px;
+    font-weight: bold;
+    color: #FF7145;
+}
+.navbar-default .navbar-brand > span {
+    font-size: .7em;
+    margin-left: 4px;
+    color: #99B4D1;
+}
+.carousel-indicators {
+    margin-bottom: -45px;
+}
+.jumbotron p {
+    font-size: 1.2em;
+}
+.modal-body p {color:#fff;}
+
+
+#tblSongs {
+    color: #666666;
+}
+#tbl_rockSongs {
+    color: #666666;
+}
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+@media only screen and (max-width: 1199px) {
+    .carousel-indicators {
+		display:none;
+	}
+}
