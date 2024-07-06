@@ -6,7 +6,7 @@
                        <head>
                            <meta charset="utf-8">
                            <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-                           <title>FGWS: Frank Gaete Work Summary</title>
+                           <title>Frank Gaete: Portfolio</title>
                            <meta name="description" content="">
                            <meta name="viewport" content="width=device-width, initial-scale=1">
                            <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -26,6 +26,7 @@
                            <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
 
                            <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+                           
                        </head>
 <body>
     <!--[if lt IE 8]>
@@ -50,18 +51,18 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Recent Roles <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="project-samples-mass-transit.html">Mass Transit Systems</a></li>
-                        <li><a href="project-samples-hcm.html">Human Capital Management</a></li>
-                        <li><a href="project-samples-financial.html">Financial Applications</a></li>
-                        <!--<li><a href="project-samples-other.html">Other Samples</a></li>-->
+                        <li><a href="project-samples-mass-transit.aspx">Mass Transit Systems</a></li>
+                        <li><a href="project-samples-hcm.aspx">Human Capital Management</a></li>
+                        <li><a href="project-samples-financial.aspx">Financial Applications</a></li>
+                        <!--<li><a href="project-samples-other.aspx">Other Samples</a></li>-->
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class=" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Project Insights<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="insights01.html">Vehicle Maintenance Application</a></li>
-                        <li><a href="insights02.html">Resource Scheduling</a></li>
-                        <li><a href="insights03.html">Personal Banking Application</a></li>
+                        <li><a href="insights01.aspx">Vehicle Maintenance Application</a></li>
+                        <li><a href="insights02.aspx">Resource Scheduling</a></li>
+                        <li><a href="insights03.aspx">Personal Banking Application</a></li>
                 
                     </ul>
                 </li>
@@ -146,14 +147,14 @@
 </div> <!-- Carousel -->
             </div>
             <div class="col-lg-7" class="heroCopy">
-                <p>After more than 20 years working as a UI/UX designer-developer, I feel extremely fortunate in that I truly enjoy what I do as much today as when I first started. I've worked in numerous verticals and organizations ranging from small startups to global fortune 500, and with many talented designers and developers.</p>
+                <p>After 20 years working as a UI/UX (UIX) designer-developer, I feel extremely fortunate in that I truly enjoy what I do as much today as when I first started. I've worked in numerous verticals and organizations ranging from small startups to global fortune 500, and with many talented designers and developers.</p>
                 <p>
                     I am a hands-on UIX designer and HTML-CSS-jQuery coder who advocates passionately for user centered design, creative collaboration, design patterns, user empathy, best practices, UX research, and other practices/considerations that support the design and delivery of optimized user experiences. I am currently seeking a new opportunity where I can continue to enjoy my work and add value to the next organization I join.
                 </p>
                 <p>- Frank Gaete</p>
-                <p><span style="font-size: .8em">Download resume: <a class="btn btn-primary btn-sm" style="margin:0 10px;" href="download/Frank Gaete resume.pdf" role="button">PDF &raquo;</a></span></p>
+                <p><span style="font-size: .8em">Download resume: <!--<a class="btn btn-primary btn-sm" style="margin:0 10px;" href="download/FrankGaete_resume_2024.docx" role="button">Word &raquo;</a>--> <a class="btn btn-primary btn-sm" style="margin:0 10px; href="download/Frank Gaete resume.pdf" role="button">PDF &raquo;</a></span></p>
                 <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>-->
-            </div> 
+            </div>
         </div>
     </div>
 </div>
@@ -170,7 +171,7 @@
                       <div class="card-body">
                         <p class="card-text">
                             I had the pleasure of working with Frank over the past year while consulting for Clever Devices.<br>
-                            During this time, Franks focus on user centered design, strong advocacy for incorporating user research throughout
+                            During this time, Frank’s focus on user centered design, strong advocacy for incorporating user research throughout
         the design process, and attention to detail, contributed to a successful revamp of multiple products in the Clever Devices suite.<br>
                             As a manager, Frank is very easy to work with and does a great job of creating a supportive and innovative environment for his team.<br>
                             I would highly recommend him for any position he pursues!</p>
@@ -244,16 +245,20 @@
             <h3 style="margin:0;">Frank Gaete</h3>
         </div>
         <div class="col-md-6 text-right">
-            <a href="https://www.linkedin.com/in/frankgaete" target="_blank"><img src="/content/img/icon_linkedin.png" style="margin-left: 8px;"></a><a href="https://twitter.com/FrankGaete1" target="_blank"><img src="/content/img/icon_twitter.png" style="margin-left: 8px;"></a>
+            <a href="https://www.linkedin.com/in/frankgaete" target="_blank"><img src="content/img/icon_linkedin.png" style="margin-left: 8px;"></a><!--<a href="https://twitter.com/FrankGaete1" target="_blank"><img src="content/img/icon_twitter.png" style="margin-left: 8px;">--></a>
         </div>
     </div>
     <div>
-        <div>&copy; 2019 FGWS - Frank Gaete Work Summary</div>
+        <div>&copy;<span id="getyear"></span> Frank Gaete</div>
     </div>
 </footer>
 <!--<img src="/content/img/icon_facebook.png" style="margin-left: 8px;"><img src="/content/img/icon_youtube.png" style="margin-left: 8px;"><img src="/content/img/icon_instagram.png" style="margin-left: 8px;"><img src="/content/img/icon_googleplus.png" style="margin-left: 8px;">-->
 </div> <!-- /container -->
-
+<script>
+    const d = new Date();
+    let year = d.getFullYear();
+    document.getElementById("getyear").innerHTML = year;
+</script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
@@ -300,5 +305,4 @@ ga('create', 'UA-XXXXX-X', 'auto'); ga('send', 'pageview');
 </script>
 </body>
 </html>
-
 
