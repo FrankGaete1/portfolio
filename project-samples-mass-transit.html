@@ -115,33 +115,26 @@
             <h3 style="margin:0;">Frank Gaete</h3>
         </div>
         <div class="col-md-6 text-right">
-            <a href="https://www.linkedin.com/in/frankgaete" target="_blank"><img src="/content/img/icon_linkedin.png" style="margin-left: 8px;"></a><a href="https://twitter.com/FrankGaete1" target="_blank"><img src="/content/img/icon_twitter.png" style="margin-left: 8px;"></a>
+            <a href="https://www.linkedin.com/in/frankgaete" target="_blank"><img src="content/img/icon_linkedin.png" style="margin-left: 8px;"></a><!--<a href="https://twitter.com/FrankGaete1" target="_blank"><img src="content/img/icon_twitter.png" style="margin-left: 8px;">--></a>
         </div>
     </div>
     <div>
-        <div>&copy; 2019 FGWS - Frank Gaete Work Summary</div>
+        <div>&copy;<span id="getyear"></span> Frank Gaete</div>
     </div>
 </footer>
 <!--<img src="/content/img/icon_facebook.png" style="margin-left: 8px;"><img src="/content/img/icon_youtube.png" style="margin-left: 8px;"><img src="/content/img/icon_instagram.png" style="margin-left: 8px;"><img src="/content/img/icon_googleplus.png" style="margin-left: 8px;">-->
 </div> <!-- /container -->
-
+<script>
+    const d = new Date();
+    let year = d.getFullYear();
+    document.getElementById("getyear").innerHTML = year;
+</script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
 <script src="js/vendor/bootstrap.min.js"></script>
 <script src="/js/plugins.js"></script>
 <script src="js/main.js"></script>
-
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#tblSongs').DataTable();
-    });
-    $(document).ready(function () {
-        $('#tbl_rockSongs').DataTable();
-    });
-</script>
 
 <script>
     $(function () {
@@ -171,4 +164,3 @@ ga('create', 'UA-XXXXX-X', 'auto'); ga('send', 'pageview');
 </script>
 </body>
 </html>
-
