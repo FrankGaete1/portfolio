@@ -58,7 +58,15 @@
                 <%--<li><a href="project-samples-other.html">Other Samples</a></li>--%>
             </ul>
         </li>
-        <li class="active"><a href="insights.html">Project Insights</a></li>
+        <li class="active dropdown">
+            <a href="#" class=" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Project Insights<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="insights01.html">Vehicle Maintenance Application</a></li>
+                <li><a href="insights02.html">Resource Scheduling</a></li>
+                <li><a href="insights03.html">Personal Banking Application</a></li>
+                <li><a href="insights04.html">Broadridge's ICS Portal</a></li>
+            </ul>
+        </li>
       </ul>
     </div>
   </div>
@@ -73,7 +81,7 @@
   <div class="row">
     <div class="col-md-5">
 		<h3>Design Lifecycle & considerations</h3>
-		<p>Typically, my design lifecycle includes the following phases after receiving a project request and processing the initial information provided. This is a high level overview with some detail provided for each phase. Each project has its own unique nuances and challenges, so for brevity's sake the following is intentionally general.</p>
+		<p>Typically, my design lifecycle includes the following phases after receiving a project request and processing the initial information provided. This is a high level overview with some detail provided for each phase. Each project has its own unique nuances and challenges, for the sake of brevity the following outline is intentionally general.</p>
     	<!-- accordion: approach -->
         <div class="panel-group" id="accordion">
 		  <div class="panel panel-default">
@@ -85,7 +93,7 @@
 			</div>
 			<div id="collapse1" class="panel-collapse collapse in">
 			  <div class="panel-body">
-				<p>Typically, my design lifecycle includes the following phases after receiving a project request and processing the initial information provided.</p>
+				<p>The design lifecycle here includes the following phases after receiving a project request and processing the initial information provided.</p>
 				<p>Assuming the requestor is a business stakeholder such as a product manager, I</p>
 				<ul>
 					<li>Schedule a design session that includes the business stakeholder, business analyst, dev lead, and other designer(s) as needed</li>
@@ -137,84 +145,11 @@
 			  <div class="panel-body">
 				<p>Depending on factors such as project timeline, overall capacity or defined design approach, we may skip one of the previous phases (wireframe or mockup) and go straight to prototyping.</p>
 				<p>In the last few years, I have used Twitter's Bootstrap framework for my rapid prototyping. Benefits of using Bootstrap include: huge popularity and use so it's well documented, easy to use, ability to manipulate layouts within the 12 column grid system, responsive, cross-browser issues have been worked out, and more.</p>
-				<p>Prototyping also provides a great time and money savings as we can quickly provide a working HTML/CSS/jQuery sample that allows stakeholders and beta users to get a very good idea of what the views will look and behave like as a user interacting with them. No or minimal effort from software engineers are expended until the prototype is approved for the development phase.</p>
+				<p>Prototyping also provides a great time and money savings as we can quickly provide a working HTML/CSS/jQuery sample that allows stakeholders and beta users to get a very good idea of what the views will look and behave like as a user interacting with them. Zero or minimal effort from software engineers is expended until the prototype is approved for the development phase.</p>
 			  </div>
 			</div>
 		  </div>
-		</div><!-- /accordion "approach" -->
-        <!--
-        <h3>Design Lifecycle & considerations</h3>
-        <div class="panel-group" id="accordion">
-		  <div class="panel panel-default">
-			<div class="panel-heading">
-			  <h4 class="panel-title">
-				<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-				Understand Requirements</a>
-			  </h4>
-			</div>
-			<div id="collapse1" class="panel-collapse collapse in">
-			  <div class="panel-body">
-				<p>Typically, my design lifecycle includes the following phases after receiving a project request and processing the initial information provided.</p>
-				<p>Assuming the requestor is a business stakeholder such as a product manager, I</p>
-				<ul>
-					<li>Schedule a design session that includes the business stakeholder, business analyst, dev lead, and other designer(s) as needed</li>
-					<li>Review requirements, business goals and any available UX research</li>
-					<li>Engage the group in a sketching exercise and iterating through various concepts quickly. The main goal here is to confirm I understand the requirements and develop a design direction that is acceptable with all represented areas and establish initial target dates for deliverables.
-				</ul>
-			  </div>
-			</div>
-		  </div>
-		  <div class="panel panel-default">
-			<div class="panel-heading">
-			  <h4 class="panel-title">
-				<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-				Patterns & Principles</a>
-			  </h4>
-			</div>
-			<div id="collapse2" class="panel-collapse collapse">
-			  <div class="panel-body">
-				<p>Once a solid understanding of the requirements and goals has been established, the next step is to review existing UI/UX design priniciples and patterns such as a style guide, design pattern library, best practices and more.</p>
-				<p>Depending on the project we may be able to use existing layouts, styles or design patterns. There may be cases where we need to create or modify a new style or design pattern.</p>
-				<p>Ultimately, basing our development on established and enforced guidelines help provide a consistency across applications and corporate communication which adds to a better user experience.</p>
-			  </div>
-			</div>
-		  </div>
-		  <div class="panel panel-default">
-			<div class="panel-heading">
-			  <h4 class="panel-title">
-				<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-				Wireframes & Mockups</a>
-			  </h4>
-			</div>
-			<div id="collapse3" class="panel-collapse collapse">
-			  <div class="panel-body">
-				<p>After determining the layouts, styles and design patterns we will use for our initial design concepts, we can start putting together wireframes.</p>
-				<p>Wireframes should be monochramitic to avoid distractions such as "why are using that shade of blue?" and allows the reviewing audience to focus on the important elements for which wireframes are intended. These elements include  interface elements we need to display (text, images, buttons, etc), general layout of these elements, relationships between elements and the workflows between elements and/or views.</p>
-				<p>Once we have approved wireframes, we use them along with our defined styles, design patterns, etc, to create a "high fidelity" design mockup that demonstrates what a view or set of views will look like in production.</p>
-			  </div>
-			</div>
-		  </div>
-
-		  <div class="panel panel-default">
-			<div class="panel-heading">
-			  <h4 class="panel-title">
-				<a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-				Prototypes & Integration</a>
-			  </h4>
-			</div>
-			<div id="collapse4" class="panel-collapse collapse">
-			  <div class="panel-body">
-				<p>Depending on factors such as project timeline, overall capacity or defined design approach, we may skip one of the previous phases (wireframe or mockup) and go straight to prototyping.</p>
-				<p>In the last few years, I have used Twitter's Bootstrap framework for my rapid prototyping. Benefits of using Bootstrap include: huge popularity and use so it's well documented, easy to use, ability to manipulate layouts within the 12 column grid system, responsive, cross-browser issues have been worked out, and more.</p>
-				<p>Prototyping also provides a great time and money savings as we can quickly provide a working HTML/CSS/jQuery sample that allows stakeholders and beta users to get a very good idea of what the views will look and behave like as a user interacting with them. No or minimal effort from software engineers are expended until the prototype is approved for the development phase.</p>
-			  </div>
-			</div>
-		  </div>
-		</div>-->
-	    <!-- /accorion "project" -->
-    
-    
-    
+		</div>
 	</div><!-- /left column -->
 	<div class="col-md-1">&nbsp;</div>
 	<div class="col-md-6">
