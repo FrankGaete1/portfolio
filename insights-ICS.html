@@ -79,7 +79,7 @@
   <div class="row">
     <div class="col-md-5">
 		<h3>Design Lifecycle & considerations</h3>
-		<p>Typically, my design lifecycle includes the following phases after receiving a project request and processing the initial information provided. This is a high level overview with some detail provided for each phase. Each project has its own unique nuances and challenges, for the sake of brevity the following outline is intentionally general.</p>
+		<p>This is a high level overview of the design lifecycle after receiving a project request and processing the initial information provided. Each project has its own unique nuances and challenges, the following demonstrates a gnerally typical approach to UX design projects in my experience.</p>
     	<!-- accordion: approach -->
         <div class="panel-group" id="accordion">
 		  <div class="panel panel-default">
@@ -91,12 +91,11 @@
 			</div>
 			<div id="collapse1" class="panel-collapse collapse in">
 			  <div class="panel-body">
-				<p>The design lifecycle here includes the following phases after receiving a project request and processing the initial information provided.</p>
-				<p>Assuming the requestor is a business stakeholder such as a product manager, I</p>
+				<p>Assuming the requestor is a business stakeholder such as a product manager, I start the discovery phase:</p>
 				<ul>
-					<li>Schedule a design session that includes the business stakeholder, business analyst, dev lead, and other designer(s) as needed</li>
+					<li>Schedule a design session that includes the product owner, business stakeholder, business analyst, dev lead, and other designer(s) as needed</li>
 					<li>Review requirements, business goals and any available UX research</li>
-					<li>Engage the group in a sketching exercise and iterating through various concepts quickly. The main goal here is to confirm I understand the requirements and develop a design direction that is acceptable with all represented areas and establish initial target dates for deliverables.
+					<li>Engage the group in a sketching exercise and iterating through various concepts quickly. The main goal here is to confirm I understand the requirements, the group understands the requirements, start to develop a design direction that is acceptable with all represented areas, identify potential challenges/obstacles and discuss project timeline if possible.
 				</ul>
 			  </div>
 			</div>
@@ -126,8 +125,9 @@
 			<div id="collapse3" class="panel-collapse collapse">
 			  <div class="panel-body">
 				<p>After determining the layouts, styles and design patterns we will use for our initial design concepts, we can start putting together wireframes.</p>
-				<p>Wireframes should be monochramitic to avoid distractions such as "why are using that shade of blue?" and allows the reviewing audience to focus on the important elements for which wireframes are intended. These elements include  interface elements we need to display (text, images, buttons, etc), general layout of these elements, relationships between elements and the workflows between elements and/or views.</p>
+				<p>Wireframes should be monochramitic to avoid distractions such as "why are using that shade of blue?" and allows the reviewing members to focus on the important elements for which wireframes are intended. These elements include  interface elements we need to display (text, images, buttons, etc), general layout of these elements, relationships between elements and the workflows between elements and/or views.</p>
 				<p>Once we have approved wireframes, we use them along with our defined styles, design patterns, etc, to create a "high fidelity" design mockup that demonstrates what a view or set of views will look like in production.</p>
+				  <p>Time/resources allowing, conduct UX research to test and validate design assumptions, allowing us to catch potential issues early on.</p>
 			  </div>
 			</div>
 		  </div>
@@ -141,9 +141,9 @@
 			</div>
 			<div id="collapse4" class="panel-collapse collapse">
 			  <div class="panel-body">
-				<p>Depending on factors such as project timeline, overall capacity or defined design approach, we may skip one of the previous phases (wireframe or mockup) and go straight to prototyping.</p>
-				<p>In the last few years, I have used Twitter's Bootstrap framework for my rapid prototyping. Benefits of using Bootstrap include: huge popularity and use so it's well documented, easy to use, ability to manipulate layouts within the 12 column grid system, responsive, cross-browser issues have been worked out, and more.</p>
-				<p>Prototyping also provides a great time and money savings as we can quickly provide a working HTML/CSS/jQuery sample that allows stakeholders and beta users to get a very good idea of what the views will look and behave like as a user interacting with them. Zero or minimal effort from software engineers is expended until the prototype is approved for the development phase.</p>
+				<p>Depending on factors such as project timeline, overall capacity or defined design approach, we may skip one of the previous steps (wireframe or mockup) and go straight to a hand coded (HTML, CSS, jQuery) prototype.</p>
+				<p>I have used Twitter's Bootstrap framework for my rapid prototyping. Benefits of using Bootstrap include: huge popularity and use so it's well documented, easy to use, ability to manipulate layouts within the 12 column grid system, responsive, cross-browser issues have been worked out, and more.</p>
+				<p>Prototyping also provides a great time and money savings as we can quickly provide a working design prototype or HTML/CSS/jQuery sample that allows stakeholders and beta users to get a very good idea of what the views will look and behave like as a user interacting with them. Zero or minimal effort from software engineers is expended until the prototype is approved for the development phase.</p>
 			  </div>
 			</div>
 		  </div>
@@ -159,7 +159,7 @@
 		Create a single sign-on portal for several "Bank and Broker" applications which were designed and developed in silos which resulted in disparate designs, workflows, environments and more. A client (user) licensing several of these applications had to sign in to each application individually and would be restricted to viewing data from only 1 application at a time. We needed to offer users true "SSO" (single sign on) and allow them to view and leverage information, data and assets across all licensed applications.</p>
 		<h4>Solution</h4>
 		<p>
-		Create a portal that included several applications with a consistent and modern UI/UX design, single sign-on functionality, security features, dashboard views with cross-application data views without having to redesign/redevelop each standalone application. 
+		Create a multi tenant portal that included all licensed applications with a consistent and modern UI/UX design, single sign-on functionality, security features, dashboard views with cross-application data views without having to redesign/redevelop each standalone application. 
 		Sounds easy right?
 		<h4>Planning</h4>
 		<p>
