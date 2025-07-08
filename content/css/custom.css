@@ -104,7 +104,8 @@ h4 {
 }
 
 .cardhr {
-	border-top: 1px solid #eaeaea; 
+	border-top: 1px solid; 
+	border-color: #eaeaea;
 	margin:20px 0;
 }
 footer h3 {
