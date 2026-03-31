@@ -62,7 +62,7 @@
             <ul class="dropdown-menu">
                 <li><a href="insights-VM.html">Vehicle Maintenance Application</a></li>
                 <li><a href="insights-HCM.html">Resource Scheduling</a></li>
-		<li><a href="insights-ICS.html">Broadridge's ICS Portal</a></li>
+				<li><a href="insights-ICS.html">Broadridge's ICS Portal</a></li>
             </ul>
         </li>
       </ul>
@@ -79,7 +79,7 @@
   <div class="row">
     <div class="col-md-5">
 		<h3>Design Lifecycle & considerations</h3>
-		<p>This is a high level overview of the design lifecycle after receiving a project request and processing the initial information provided. Each project has its own unique nuances and challenges, the following demonstrates a gnerally typical approach to UX design projects in my experience.</p>
+		<p>This is a high level overview of the design lifecycle after receiving a project request and processing the initial information provided. Each project has its own unique nuances and challenges, the following demonstrates a typical approach to UX design projects in my experience.</p>
     	<!-- accordion: approach -->
         <div class="panel-group" id="accordion">
 		  <div class="panel panel-default">
@@ -91,7 +91,7 @@
 			</div>
 			<div id="collapse1" class="panel-collapse collapse in">
 			  <div class="panel-body">
-				<p>Assuming the requestor is a business stakeholder such as a product manager, I start the discovery phase:</p>
+				<p>Start the discovery phase:</p>
 				<ul>
 					<li>Schedule a design session that includes the product owner, business stakeholder, business analyst, dev lead, and other designer(s) as needed</li>
 					<li>Review requirements, business goals and any available UX research</li>
@@ -111,7 +111,7 @@
 			  <div class="panel-body">
 				<p>Once a solid understanding of the requirements and goals has been established, the next step is to review existing UI/UX design priniciples and patterns such as a style guide, design pattern library, best practices and more.</p>
 				<p>Depending on the project we may be able to use existing layouts, styles or design patterns. There may be cases where we need to create or modify a new style or design pattern.</p>
-				<p>Ultimately, basing our development on established and enforced guidelines help provide a consistency across applications and corporate communication which adds to a better user experience.</p>
+				<p>Base our design and development on established guidelines to ensure consistency across applications and corporate communication.</p>
 			  </div>
 			</div>
 		  </div>
@@ -124,10 +124,10 @@
 			</div>
 			<div id="collapse3" class="panel-collapse collapse">
 			  <div class="panel-body">
-				<p>After determining the layouts, styles and design patterns we will use for our initial design concepts, we can start putting together wireframes.</p>
-				<p>Wireframes should be monochramitic to avoid distractions such as "why are using that shade of blue?" and allows the reviewing members to focus on the important elements for which wireframes are intended. These elements include  interface elements we need to display (text, images, buttons, etc), general layout of these elements, relationships between elements and the workflows between elements and/or views.</p>
-				<p>Once we have approved wireframes, we use them along with our defined styles, design patterns, etc, to create a "high fidelity" design mockup that demonstrates what a view or set of views will look like in production.</p>
-				  <p>Time/resources allowing, conduct UX research to test and validate design assumptions, allowing us to catch potential issues early on.</p>
+				<p>After determining the layouts, styles and design patterns to be used for the initial design concepts,  wireframes are created.</p>
+				<p>Wireframes are typically monochramitic to avoid distractions such as "why are using that shade of blue?" and allows the reviewing members to focus on the important elements for which wireframes are intended. These elements include  interface elements we need to display (text, images, buttons, etc), general layout of these elements, relationships between elements and the workflows between elements and/or views.</p>
+				<p>After the wireframe iteration is completed and approved, style guides/design systemis leveraged to create a "high fidelity" design mockup that demonstrates what a view or set of views will look like in production.</p>
+				  <p>Time/resources allowing, conduct UX research to test and validate design assumptions, allowing  potential issues to be identified early on.</p>
 			  </div>
 			</div>
 		  </div>
@@ -142,8 +142,7 @@
 			<div id="collapse4" class="panel-collapse collapse">
 			  <div class="panel-body">
 				<p>Depending on factors such as project timeline, overall capacity or defined design approach, we may skip one of the previous steps (wireframe or mockup) and go straight to a hand coded (HTML, CSS, jQuery) prototype.</p>
-				<p>I have used Twitter's Bootstrap framework for my rapid prototyping. Benefits of using Bootstrap include: huge popularity and use so it's well documented, easy to use, ability to manipulate layouts within the 12 column grid system, responsive, cross-browser issues have been worked out, and more.</p>
-				<p>Prototyping also provides a great time and money savings as we can quickly provide a working design prototype or HTML/CSS/jQuery sample that allows stakeholders and beta users to get a very good idea of what the views will look and behave like as a user interacting with them. Zero or minimal effort from software engineers is expended until the prototype is approved for the development phase.</p>
+				<p>Prototyping provides great time and money savings as it allows stakeholders and beta users to get a very good sense of what the actual app/workflows will look and behave like.</p>
 			  </div>
 			</div>
 		  </div>
@@ -153,7 +152,7 @@
 	<div class="col-md-6">
 		<h3>Project Insights Example: ICS Portal</h3>
 		<img src="content/img/site_ics-portal-dashboard_800x600.jpg" class="img-responsive cover" style="margin: 20px 0;">
-		<p>Here I describe how design considerations and lifecycle were applied to one of the largest projects I worked on, Broadrige's ICS Portal. This project included several "Bank and Broker" applications, was a "first-of-its-kind" at Broadridge and took over 1 year to complete. </p>
+		<p>This outlines how design considerations and lifecycle were applied to one of the largest projects I worked on, Broadrige's ICS Portal. This project included several "Bank and Broker" applications, was a "first-of-its-kind" at Broadridge and took over 1 year to complete. </p>
 		<h4>Problem</h4>
 		<p><!--<span class="sectionTitle1">Problem</span><br>-->
 		Create a single sign-on portal for several "Bank and Broker" applications which were designed and developed in silos which resulted in disparate designs, workflows, environments and more. A client (user) licensing several of these applications had to sign in to each application individually and would be restricted to viewing data from only 1 application at a time. We needed to offer users true "SSO" (single sign on) and allow them to view and leverage information, data and assets across all licensed applications.</p>
