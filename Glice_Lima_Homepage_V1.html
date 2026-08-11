@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Glice Lima — Homepage Concept V1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1E2D4D;
+    --navy-2:#16223B;
+    --navy-soft:#2B374F;
+    --gold:#C6A664;
+    --gold-light:#E4CFA0;
+    --cream:#F7F5F0;
+    --paper:#FFFFFF;
+    --ink:#1B1D22;
+    --ink-soft:#6B6F76;
+    --line:#E4E1DA;
+    --sans:'Inter',sans-serif;
+    --disp:'Jost',sans-serif;
+    --serif:'Cormorant Garamond',serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  img{display:block;max-width:100%;}
+  a{text-decoration:none;color:inherit;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 32px;}
+  .eyebrow{font-family:var(--disp);text-transform:uppercase;letter-spacing:.18em;font-size:12px;color:var(--gold);font-weight:500;}
+  .tag-label{font-family:var(--disp);text-transform:uppercase;letter-spacing:.14em;font-size:11px;color:var(--ink-soft);}
+
+  /* ---------- top utility bar ---------- */
+  .util-bar{background:var(--navy-2);color:#cfd4de;font-size:12px;padding:8px 0;}
+  .util-bar .wrap{display:flex;justify-content:space-between;align-items:center;}
+  .util-bar .langs a{padding:0 8px;color:#cfd4de;border-right:1px solid #3a4562;}
+  .util-bar .langs a:first-child{padding-left:0;}
+  .util-bar .langs a:last-child{border-right:none;}
+  .util-bar .langs a.active{color:var(--gold-light);font-weight:600;}
+  .util-bar .contact-mini span{margin-left:18px;color:#9aa2b5;}
+
+  /* ---------- header ---------- */
+  header.site{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:100;}
+  header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;gap:24px;}
+  .logo img{height:46px;width:auto;}
+  nav.primary{display:flex;align-items:center;gap:30px;}
+  nav.primary a{font-family:var(--disp);font-size:13px;letter-spacing:.04em;font-weight:500;color:var(--ink);position:relative;padding:6px 0;}
+  nav.primary a:after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .2s;}
+  nav.primary a:hover:after{transform:scaleX(1);}
+  .cta-btn{font-family:var(--disp);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:12px 24px;border-radius:2px;display:inline-block;}
+  .cta-gold{background:var(--gold);color:var(--navy-2);}
+  .cta-gold:hover{background:#b5945a;}
+  .cta-ghost-dark{border:1px solid rgba(255,255,255,.5);color:#fff;}
+  .cta-ghost-dark:hover{border-color:#fff;background:rgba(255,255,255,.08);}
+
+  /* ---------- HERO — full-bleed navy ---------- */
+  .hero{
+    position:relative;background:linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 70%);
+    overflow:hidden;padding:100px 0 90px;
+  }
+  .hero:before{
+    content:"";position:absolute;inset:0;
+    background-image:url('https://images.unsplash.com/photo-1506966953602-c20cc11f75e3?auto=format&fit=crop&w=2000&q=60');
+    background-size:cover;background-position:center;opacity:.16;mix-blend-mode:luminosity;
+  }
+  .hero-skyline{position:absolute;right:-60px;bottom:-40px;width:520px;opacity:.5;pointer-events:none;}
+  .hero-skyline svg{width:100%;height:auto;}
+  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:end;}
+  .hero-copy .eyebrow{margin-bottom:18px;}
+  .hero h1{font-family:var(--serif);font-style:italic;font-weight:500;color:#fff;font-size:52px;line-height:1.12;max-width:640px;}
+  .hero h1 em{color:var(--gold-light);font-style:italic;}
+  .hero p.sub{color:#c7cddb;font-size:16px;max-width:480px;margin-top:22px;line-height:1.7;}
+  .hero-actions{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap;}
+  .hero-stats{display:flex;flex-direction:column;gap:22px;border-left:1px solid rgba(255,255,255,.18);padding-left:32px;}
+  .hero-stat b{display:block;font-family:var(--disp);font-size:30px;color:#fff;font-weight:400;}
+  .hero-stat span{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#9aa2b5;}
+
+  /* ---------- section shell ---------- */
+  section{padding:88px 0;}
+  section.tight{padding:64px 0;}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:40px;flex-wrap:wrap;}
+  .sec-head h2{font-family:var(--serif);font-weight:500;font-size:36px;color:var(--navy);}
+  .sec-head .view-all{font-family:var(--disp);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);border-bottom:1px solid var(--gold);padding-bottom:3px;}
+
+  /* ---------- FEATURED LISTINGS — editorial asymmetric grid ---------- */
+  .listings-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;}
+  .listing-card{position:relative;border-radius:2px;overflow:hidden;background:var(--cream);}
+  .listing-card .photo{position:relative;overflow:hidden;}
+  .listing-card .photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+  .listing-card:hover .photo img{transform:scale(1.06);}
+  .listing-card.hero-listing .photo{aspect-ratio:4/3;}
+  .listing-card .price-tag{position:absolute;top:16px;left:16px;background:var(--navy);color:#fff;font-family:var(--disp);font-size:13px;letter-spacing:.04em;padding:8px 14px;border-radius:2px;}
+  .listing-card .body{padding:18px 4px 4px;}
+  .listing-card h3{font-family:var(--disp);font-size:17px;font-weight:500;color:var(--ink);}
+  .listing-card .meta{font-size:13px;color:var(--ink-soft);margin-top:6px;}
+  .listing-side{display:flex;flex-direction:column;gap:24px;}
+  .listing-side .listing-card .photo{aspect-ratio:16/10;}
+  .more-card{background:var(--navy);color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:28px;border-radius:2px;}
+  .more-card .eyebrow{color:var(--gold-light);}
+  .more-card h3{font-family:var(--serif);font-style:italic;font-size:24px;margin:10px 0 16px;font-weight:500;}
+  .more-card a{font-family:var(--disp);font-size:12px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--gold);padding-bottom:3px;}
+
+  /* ---------- EXPLORE BY COUNTY — navy band ---------- */
+  .county-band{background:var(--navy);color:#fff;position:relative;}
+  .county-band .sec-head h2{color:#fff;}
+  .county-band .sec-head p{color:#aab1c2;font-size:15px;max-width:520px;margin-top:8px;}
+  .county-band .sec-head .view-all{color:#fff;}
+  .county-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .county-card{position:relative;aspect-ratio:3/4;border-radius:2px;overflow:hidden;}
+  .county-card img{width:100%;height:100%;object-fit:cover;filter:saturate(.9) brightness(.75);transition:transform .5s;}
+  .county-card:hover img{transform:scale(1.07);}
+  .county-card:before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(14,20,36,.92) 0%,rgba(14,20,36,.15) 55%);}
+  .county-card .info{position:absolute;left:0;right:0;bottom:0;padding:26px;}
+  .county-card .num{font-family:var(--disp);font-size:12px;color:var(--gold-light);letter-spacing:.14em;}
+  .county-card h3{font-family:var(--serif);font-style:italic;font-size:28px;font-weight:500;margin:8px 0 10px;color:#fff;}
+  .county-card p{font-size:13px;color:#cfd4de;}
+
+  /* ---------- SERVICES teaser ---------- */
+  .services-band{background:var(--cream);}
+  .services-inner{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;}
+  .services-copy h2{font-family:var(--serif);font-weight:500;font-size:30px;color:var(--navy);max-width:340px;}
+  .services-copy p{color:var(--ink-soft);margin-top:12px;max-width:340px;font-size:14px;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:10px;max-width:640px;}
+  .pill{font-family:var(--disp);font-size:12px;letter-spacing:.04em;padding:10px 18px;border:1px solid #d7d2c6;border-radius:30px;color:var(--navy);background:#fff;white-space:nowrap;}
+  .pill.more{background:var(--navy);color:#fff;border-color:var(--navy);}
+
+  /* ---------- TESTIMONIALS + PRESS ---------- */
+  .test-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;}
+  .quote-card{background:var(--cream);padding:32px 28px;border-radius:2px;position:relative;}
+  .quote-card .mark{font-family:var(--serif);font-size:52px;color:var(--gold);line-height:.4;display:block;margin-bottom:18px;}
+  .quote-card p{font-family:var(--serif);font-style:italic;font-size:18px;line-height:1.55;color:var(--ink);}
+  .quote-card .by{margin-top:18px;font-family:var(--disp);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);}
+  .press-card{display:flex;flex-direction:column;justify-content:center;gap:18px;}
+  .press-card .tag-label{margin-bottom:4px;}
+  .press-logos{display:flex;flex-direction:column;gap:14px;}
+  .press-logos span{font-family:var(--serif);font-size:20px;color:var(--ink-soft);letter-spacing:.02em;}
+
+  /* ---------- MARKET REPORT CTA — gold band ---------- */
+  .cta-band{background:linear-gradient(120deg,var(--gold) 0%,#d4b578 100%);}
+  .cta-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+  .cta-inner h2{font-family:var(--serif);font-style:italic;font-weight:500;font-size:32px;color:var(--navy-2);max-width:520px;}
+  .cta-inner p{color:#4a3f24;margin-top:10px;font-size:14px;}
+  .cta-form{display:flex;gap:0;}
+  .cta-form input{font-family:var(--sans);font-size:14px;padding:14px 16px;border:1px solid var(--navy-2);border-right:none;width:260px;background:#fff;}
+  .cta-form button{font-family:var(--disp);font-size:12px;letter-spacing:.08em;text-transform:uppercase;background:var(--navy-2);color:#fff;padding:0 22px;border:1px solid var(--navy-2);font-weight:600;cursor:pointer;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy-2);color:#aab1c2;padding:64px 0 28px;}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;padding-bottom:40px;border-bottom:1px solid #2a3552;}
+  .foot-grid img{height:40px;margin-bottom:14px;}
+  .foot-grid p{font-size:13px;line-height:1.7;max-width:260px;color:#8a92a8;}
+  .foot-col h4{font-family:var(--disp);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin-bottom:16px;}
+  .foot-col a{display:block;font-size:13px;color:#aab1c2;margin-bottom:10px;}
+  .foot-col a:hover{color:var(--gold-light);}
+  .foot-bottom{display:flex;justify-content:space-between;padding-top:24px;font-size:12px;color:#7680992;flex-wrap:wrap;gap:10px;}
+  .foot-bottom span{color:#7d859c;}
+
+  .badge{position:fixed;top:14px;right:14px;background:var(--navy-2);color:#fff;font-family:var(--disp);font-size:11px;letter-spacing:.08em;padding:8px 14px;border-radius:20px;z-index:999;box-shadow:0 4px 14px rgba(0,0,0,.25);}
+
+  @media(max-width:980px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-stats{border-left:none;padding-left:0;flex-direction:row;gap:28px;border-top:1px solid rgba(255,255,255,.18);padding-top:20px;}
+    .listings-grid{grid-template-columns:1fr;}
+    .county-grid{grid-template-columns:1fr;}
+    .test-grid{grid-template-columns:1fr;}
+    nav.primary{display:none;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="badge">CONCEPT V1 — Full-Bleed Navy Hero</div>
+
+<div class="util-bar">
+  <div class="wrap">
+    <div class="langs"><a class="active" href="#">EN</a><a href="#">PT</a><a href="#">ES</a></div>
+    <div class="contact-mini"><span>(305) 555‑0148</span><span>hello@glicelima.com</span></div>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="#"><img src="logo-GliceLima-001.jpg" alt="Glice Lima — Broker, Luxury Real Estate"></a>
+    <nav class="primary">
+      <a href="#listings">Listings</a>
+      <a href="#county">Neighborhoods</a>
+      <a href="#">Investment</a>
+      <a href="#">Market Reports</a>
+      <a href="#services">Network</a>
+      <a href="#">About</a>
+    </nav>
+    <a class="cta-btn cta-gold" href="#">Contact Glice</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-skyline">
+    <svg viewBox="0 0 300 260" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#C6A664" stroke-width="2">
+      <rect x="20" y="120" width="30" height="100"/><rect x="55" y="80" width="26" height="140"/>
+      <rect x="86" y="40" width="30" height="180"/><polygon points="116,40 132,10 148,40"/>
+      <rect x="148" y="70" width="28" height="150"/><rect x="181" y="30" width="32" height="190"/>
+      <rect x="218" y="95" width="26" height="125"/><rect x="249" y="60" width="30" height="160"/>
+      <line x1="10" y1="150" x2="290" y2="150"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="eyebrow">Broker · Luxury Real Estate</div>
+      <h1>15 Years Guiding South Florida's Buyers &amp; Sellers — <em>Miami to Palm Beach</em></h1>
+      <p class="sub">Full-service representation across Miami-Dade, Broward, and Palm Beach counties — from waterfront estates to skyline residences, backed by an on-call network of trusted specialists.</p>
+      <div class="hero-actions">
+        <a class="cta-btn cta-gold" href="#listings">View Listings</a>
+        <a class="cta-btn cta-ghost-dark" href="#">Contact Glice</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><b>15+</b><span>Years in South Florida</span></div>
+      <div class="hero-stat"><b>3</b><span>Counties Served</span></div>
+      <div class="hero-stat"><b>EN · PT · ES</b><span>Trilingual Service</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="listings">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Featured Listings</h2>
+      <a class="view-all" href="#">View All Listings →</a>
+    </div>
+    <div class="listings-grid">
+      <div class="listing-card hero-listing">
+        <div class="photo">
+          <span class="price-tag">$5,800,000</span>
+          <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=75" alt="Las Olas waterfront estate">
+        </div>
+        <div class="body">
+          <h3>Las Olas Waterfront Estate</h3>
+          <div class="meta">5 bd · 6 ba · 6,420 sqft — Fort Lauderdale, Broward</div>
+        </div>
+      </div>
+      <div class="listing-side">
+        <div class="listing-card">
+          <div class="photo">
+            <span class="price-tag">$3,250,000</span>
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=75" alt="Brickell skyline residence">
+          </div>
+          <div class="body">
+            <h3>Brickell Skyline Residence</h3>
+            <div class="meta">4 bd · 4.5 ba · 3,180 sqft — Miami-Dade</div>
+          </div>
+        </div>
+        <div class="listing-card">
+          <div class="photo">
+            <span class="price-tag">$2,975,000</span>
+            <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=75" alt="Delray Beach modern retreat">
+          </div>
+          <div class="body">
+            <h3>Delray Beach Modern Retreat</h3>
+            <div class="meta">4 bd · 3.5 ba · 3,760 sqft — Palm Beach</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="county-band" id="county">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2>Explore by County</h2>
+        <p>From the Brickell skyline to the estate lots of Palm Beach — coverage across South Florida's three luxury corridors.</p>
+      </div>
+      <a class="view-all" href="#">All Neighborhoods →</a>
+    </div>
+    <div class="county-grid">
+      <div class="county-card">
+        <img src="https://images.unsplash.com/photo-1506966953602-c20cc11f75e3?auto=format&fit=crop&w=900&q=70" alt="Miami-Dade">
+        <div class="info"><div class="num">01</div><h3>Miami‑Dade</h3><p>Brickell · Coconut Grove · Coral Gables +2 more</p></div>
+      </div>
+      <div class="county-card">
+        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=900&q=70" alt="Broward">
+        <div class="info"><div class="num">02</div><h3>Broward</h3><p>Fort Lauderdale · Las Olas</p></div>
+      </div>
+      <div class="county-card">
+        <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=900&q=70" alt="Palm Beach">
+        <div class="info"><div class="num">03</div><h3>Palm Beach</h3><p>Boca Raton · Delray Beach +3 more</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services-band tight" id="services">
+  <div class="wrap services-inner">
+    <div class="services-copy">
+      <h2>A 360° Network of Trusted Specialists</h2>
+      <p>Every transaction is backed by a vetted bench of mortgage, legal, and design professionals.</p>
+    </div>
+    <div class="pill-row">
+      <span class="pill">Mortgage</span><span class="pill">Attorney</span><span class="pill">Title</span>
+      <span class="pill">Accountant</span><span class="pill">Builder</span><span class="pill">Design</span>
+      <span class="pill more">+5 more →</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><h2>Testimonials &amp; Press</h2></div>
+    <div class="test-grid">
+      <div class="quote-card">
+        <span class="mark">“</span>
+        <p>Glice guided us through a competitive Brickell purchase with total clarity — we closed two weeks ahead of schedule.</p>
+        <div class="by">— R. Alvarez, Brickell</div>
+      </div>
+      <div class="quote-card">
+        <span class="mark">“</span>
+        <p>From listing to closing, every detail was handled with precision. Our Delray Beach sale exceeded ask.</p>
+        <div class="by">— M. Chen, Delray Beach</div>
+      </div>
+      <div class="press-card">
+        <div class="tag-label">As Featured In</div>
+        <div class="press-logos">
+          <span>Miami Herald</span>
+          <span>South Florida Business Journal</span>
+          <span>Mansion Global</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band tight">
+  <div class="wrap cta-inner">
+    <div>
+      <h2>Get the Quarterly South Florida Luxury Market Report</h2>
+      <p>Pricing trends, absorption rates, and buyer demand across Miami-Dade, Broward &amp; Palm Beach.</p>
+    </div>
+    <div class="cta-form">
+      <input type="email" placeholder="Your email address">
+      <button>Get the Report</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <img src="logo-GliceLima-001.jpg" alt="Glice Lima">
+        <p>Broker · Luxury Real Estate serving Miami-Dade, Broward &amp; Palm Beach counties.</p>
+      </div>
+      <div class="foot-col"><h4>Explore</h4><a href="#">Listings</a><a href="#">Neighborhoods</a><a href="#">Investment</a><a href="#">Market Reports</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="#">About Glice</a><a href="#">Network</a><a href="#">Press</a><a href="#">Contact</a></div>
+      <div class="foot-col"><h4>Connect</h4><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">YouTube</a></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Glice Lima. All rights reserved.</span>
+      <span>Equal Housing Opportunity</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
