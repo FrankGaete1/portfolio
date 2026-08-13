@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Frank Gaete — TD Bank's Payment Center: Case Study</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Case study: designing TD Bank's credit card Payment Center — from a single balance-transfer option to a full-featured payment experience.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1E2D4D; --navy-2:#16223B; --navy-tint:#EEF0F5;
+    --gold:#C6A664; --gold-light:#E4CFA0; --gold-tint:#F7EFDD;
+    --cream:#F7F5F0; --paper:#FFFFFF; --ink:#1B1D22; --ink-soft:#6B6F76; --line:#E4E1DA;
+    --sans:'Inter',sans-serif; --disp:'Jost',sans-serif; --serif:'Cormorant Garamond',serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  img{display:block;max-width:100%;}
+  a{text-decoration:none;color:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  .eyebrow{font-family:var(--disp);text-transform:uppercase;letter-spacing:.18em;font-size:12px;color:var(--gold);font-weight:500;}
+  .tag-label{font-family:var(--disp);text-transform:uppercase;letter-spacing:.14em;font-size:11px;color:var(--ink-soft);}
+  section{padding:80px 0;}
+  section.tight{padding:56px 0;}
+  h2.sec-title{font-family:var(--serif);font-weight:500;font-size:36px;color:var(--navy);}
+  .sec-num{font-family:var(--disp);font-size:13px;letter-spacing:.14em;color:var(--gold);margin-bottom:10px;}
+  .sec-lede{color:var(--ink-soft);font-size:15.5px;max-width:680px;margin-top:14px;line-height:1.75;}
+  .badge{position:fixed;top:14px;right:14px;background:var(--navy-2);color:#fff;font-family:var(--disp);font-size:11px;letter-spacing:.08em;padding:8px 14px;border-radius:20px;z-index:999;box-shadow:0 4px 14px rgba(0,0,0,.25);}
+
+  /* ---------- header ---------- */
+  header.site{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:100;}
+  header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 32px;gap:20px;flex-wrap:wrap;}
+  .logo{font-family:var(--disp);font-weight:600;font-size:17px;letter-spacing:.03em;color:var(--navy);display:flex;align-items:center;gap:10px;}
+  .logo .back{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);font-weight:500;border:1px solid var(--gold);border-radius:20px;padding:5px 12px;}
+  .logo .back:hover{background:var(--gold-tint);}
+  .stepper{display:flex;gap:2px;flex-wrap:wrap;}
+  .stepper a{font-family:var(--disp);font-size:11px;letter-spacing:.04em;color:var(--ink-soft);padding:8px 10px;border-radius:20px;}
+  .stepper a:hover{color:var(--navy);background:var(--gold-tint);}
+
+  /* ---------- title block ---------- */
+  .title-block{background:linear-gradient(165deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;padding:90px 0 70px;position:relative;overflow:hidden;}
+  .title-block:before{content:"";position:absolute;right:-100px;top:-100px;width:340px;height:340px;border:1px solid rgba(255,255,255,.08);border-radius:50%;}
+  .title-block .wrap{position:relative;z-index:2;}
+  .title-block h1{font-family:var(--serif);font-style:italic;font-weight:500;font-size:46px;line-height:1.18;max-width:760px;margin-top:16px;}
+  .title-block h1 span{color:var(--gold-light);}
+  .title-block p.sub{color:#c7cddb;font-size:16px;max-width:640px;margin-top:20px;line-height:1.7;}
+  .meta-row{display:flex;gap:28px;margin-top:36px;flex-wrap:wrap;}
+  .meta-row div{border-left:1px solid rgba(255,255,255,.22);padding-left:14px;}
+  .meta-row b{display:block;font-family:var(--disp);font-size:13px;color:var(--gold-light);}
+  .meta-row span{font-size:12px;color:#9aa2b5;text-transform:uppercase;letter-spacing:.06em;}
+
+  /* ---------- process stepper strip ---------- */
+  .process-strip{background:var(--cream);border-bottom:1px solid var(--line);}
+  .process-strip .wrap{display:flex;justify-content:space-between;padding:20px 32px;flex-wrap:wrap;gap:8px;}
+  .process-strip a{font-family:var(--disp);font-size:10.5px;letter-spacing:.03em;text-align:center;color:var(--ink-soft);display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;min-width:96px;}
+  .process-strip a b{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--gold);font-weight:500;}
+  .process-strip a:hover{color:var(--navy);}
+
+  /* ---------- generic cards ---------- */
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .card{background:var(--cream);border-radius:2px;padding:26px;}
+  .card h3{font-family:var(--disp);font-size:15.5px;font-weight:500;color:var(--navy);}
+  .card .stat{font-family:var(--serif);font-style:italic;font-size:30px;color:var(--gold);font-weight:500;display:block;margin-bottom:8px;}
+  .card p{font-size:13.5px;color:var(--ink-soft);margin-top:8px;line-height:1.65;}
+
+  /* ---------- company / award cards ---------- */
+  .award-card{border:1px solid var(--line);border-radius:2px;padding:22px 24px;background:#fff;}
+  .award-card .tag-label{color:var(--gold);}
+  .award-card h3{font-family:var(--serif);font-style:italic;font-weight:500;font-size:18px;color:var(--navy);margin-top:8px;}
+  .award-card p{font-size:12.5px;color:var(--ink-soft);margin-top:8px;line-height:1.6;}
+
+  /* ---------- problem / solution ---------- */
+  .scope-grid{margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:2px;overflow:hidden;}
+  .scope-col{padding:30px 32px;}
+  .scope-col.changing{background:#fff;border-right:1px solid var(--line);}
+  .scope-col.staying{background:var(--cream);}
+  .scope-col .tag-label{margin-bottom:14px;}
+  .scope-col.changing .tag-label{color:#B85C5C;}
+  .scope-col.staying .tag-label{color:var(--gold);}
+  .scope-col p{font-size:14px;color:var(--ink-soft);line-height:1.75;}
+
+  /* ---------- process stage sections ---------- */
+  .stage-num{font-family:var(--serif);font-style:italic;font-size:44px;color:var(--gold);font-weight:500;line-height:1;}
+  .stage-head{display:flex;gap:20px;align-items:flex-start;}
+  .stage-head .stage-txt h2{margin-top:2px;}
+  .method-grid{margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;}
+  .method-card{background:#fff;border:1px solid var(--line);border-left:3px solid var(--navy);border-radius:2px;padding:18px 20px;}
+  .method-card p{font-size:13px;color:var(--ink-soft);line-height:1.6;}
+  .stage-goal{margin-top:14px;font-family:var(--serif);font-style:italic;font-size:17px;color:var(--navy);max-width:680px;line-height:1.5;}
+
+  /* ---------- gallery ---------- */
+  .gallery-band{background:var(--navy-2);color:#fff;}
+  .gallery-band h2.sec-title{color:#fff;}
+  .gallery-band .sec-lede{color:#aab1c2;}
+  .gallery-grid{margin-top:40px;display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+  .gallery-item{border-radius:2px;overflow:hidden;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.14);}
+  .gallery-item img{width:100%;display:block;}
+  .gallery-item .cap{padding:14px 18px;font-family:var(--disp);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:#c7cddb;}
+
+  footer{background:var(--navy-2);color:#aab1c2;padding:50px 0 28px;}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .foot-inner .flogo{font-family:var(--disp);font-weight:600;font-size:16px;color:#fff;}
+  .foot-inner p{font-size:12px;color:#7d859c;}
+  .foot-inner a.back2{font-family:var(--disp);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-light);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:8px 16px;}
+
+  @media(max-width:980px){
+    .grid-2,.grid-3,.grid-4,.scope-grid,.gallery-grid{grid-template-columns:1fr;}
+    .scope-col.changing{border-right:none;border-bottom:1px solid var(--line);}
+    .stepper,.process-strip .wrap{display:none;}
+    .stage-head{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<div class="badge">CASE STUDY — Consumer Banking</div>
+
+<header class="site">
+  <div class="wrap">
+    <div class="logo"><a href="index.html">Frank Gaete</a><a class="back" href="index.html">← Portfolio</a></div>
+    <nav class="stepper">
+      <a href="#discovery">Discovery</a>
+      <a href="#definition">Define</a>
+      <a href="#ideation">Ideate</a>
+      <a href="#prototyping">Prototype</a>
+      <a href="#validation">Validate</a>
+      <a href="#handoff">Handoff</a>
+      <a href="#postlaunch">Post-Launch</a>
+    </nav>
+  </div>
+</header>
+
+<div class="title-block" id="top">
+  <div class="wrap">
+    <div class="eyebrow">Case Study · Consumer Banking</div>
+    <h1>Rebuilding How TD Cardholders Pay — <span>One Option to a Full Payment Center</span></h1>
+    <p class="sub">When I joined TD Bank, the only way a credit card holder could make a payment was by transferring money from a deposit account — no choice of statement balance vs. minimum due, no autopay, no scheduled future payments. Here's how that single, rigid flow became a full payment center, built to eventually serve every TD payment account, not just credit cards.</p>
+    <div class="meta-row">
+      <div><b>TD Bank, N.A.</b><span>Client</span></div>
+      <div><b>Sr. UX/Product Designer</b><span>Role</span></div>
+      <div><b>Credit Card Payments</b><span>Scope</span></div>
+      <div><b>2021 – Present</b><span>Engagement</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="process-strip">
+  <div class="wrap">
+    <a href="#discovery"><b>01</b>Discovery</a>
+    <a href="#definition"><b>02</b>Define</a>
+    <a href="#ideation"><b>03</b>Ideate</a>
+    <a href="#prototyping"><b>04</b>Prototype</a>
+    <a href="#validation"><b>05</b>Validate</a>
+    <a href="#handoff"><b>06</b>Handoff</a>
+    <a href="#postlaunch"><b>07</b>Post-Launch</a>
+  </div>
+</div>
+
+<!-- ============ THE BANK ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-num">The Client</div>
+    <h2 class="sec-title">TD Bank, N.A.</h2>
+    <p class="sec-lede">TD Bank, N.A. is an American national bank and the United States subsidiary of the Canadian multinational TD Bank Group.</p>
+    <div class="grid-2" style="margin-top:32px;">
+      <div class="award-card">
+        <div class="tag-label">Recognition</div>
+        <h3>Best Consumer Digital Bank in North America</h3>
+        <p>Named Best Consumer Digital Bank in North America for the fourth consecutive year by Global Finance.</p>
+      </div>
+      <div class="award-card">
+        <div class="tag-label">Recognition</div>
+        <h3>2025 BIG Innovation Award</h3>
+        <p>Winner of the BIG Innovation Award for the fourth year in a row.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROBLEM / SOLUTION ============ -->
+<section style="background:var(--cream);">
+  <div class="wrap">
+    <div class="sec-num">Project Overview</div>
+    <h2 class="sec-title">One rigid workaround, everywhere else competitors had a full payment center.</h2>
+    <div class="scope-grid">
+      <div class="scope-col changing">
+        <div class="tag-label">Problem</div>
+        <p>The only way a TD credit card holder could make a payment was by transferring money from a deposit account to the credit card account. There was no way to choose statement balance vs. minimum amount due, no way to set up automatic payments, and no way to schedule a future one-time payment — functions competitors already had in place.</p>
+      </div>
+      <div class="scope-col staying">
+        <div class="tag-label">Solution / Requirement</div>
+        <p>Design and build a service that lets TD credit card holders make payments with all standard payment options. I recommended a payment center built to extend beyond credit cards — a foundation other TD payment accounts, like auto and mortgage loans, could eventually be layered onto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 01 DISCOVERY ============ -->
+<section id="discovery">
+  <div class="wrap">
+    <div class="stage-head">
+      <div class="stage-num">01</div>
+      <div class="stage-txt">
+        <div class="sec-num" style="margin-bottom:2px;">Discovery</div>
+        <h2 class="sec-title" style="font-size:28px;">Understanding the Gap</h2>
+        <p class="stage-goal">Understand user needs, motivations, behaviors, and pain points.</p>
+      </div>
+    </div>
+    <div class="method-grid">
+      <div class="method-card"><p>Reviewed existing credit card payment workflows, user journeys and stakeholder insights.</p></div>
+      <div class="method-card"><p>Ran a competitive analysis against payment experiences competitors already had live.</p></div>
+      <div class="method-card"><p>Analyzed existing customer feedback tied to the current transfer-only payment flow.</p></div>
+      <div class="method-card"><p>Created initial wireframe concepts of new payment workflows to react to.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 DEFINE ============ -->
+<section id="definition" style="background:var(--cream);">
+  <div class="wrap">
+    <div class="stage-head">
+      <div class="stage-num">02</div>
+      <div class="stage-txt">
+        <div class="sec-num" style="margin-bottom:2px;">Definition &amp; Analysis</div>
+        <h2 class="sec-title" style="font-size:28px;">Distilling Research into Insight</h2>
+        <p class="stage-goal">Distill research findings into actionable insights.</p>
+      </div>
+    </div>
+    <div class="method-grid">
+      <div class="method-card"><p>Reviewed and created user personas grounded in the discovery findings.</p></div>
+      <div class="method-card"><p>Built empathy maps and user journey maps around the current payment flow.</p></div>
+      <div class="method-card"><p>Wrote clearly defined problem statements to align the team before ideation.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 IDEATION ============ -->
+<section id="ideation">
+  <div class="wrap">
+    <div class="stage-head">
+      <div class="stage-num">03</div>
+      <div class="stage-txt">
+        <div class="sec-num" style="margin-bottom:2px;">Ideation</div>
+        <h2 class="sec-title" style="font-size:28px;">Developing the Solution Space</h2>
+        <p class="stage-goal">Develop potential solutions for the defined problems.</p>
+      </div>
+    </div>
+    <div class="method-grid">
+      <div class="method-card"><p>Sketched concepts and built out wireframes for the new payment flows.</p></div>
+      <div class="method-card"><p>Mapped user flows across payment type, amount and scheduling choices.</p></div>
+      <div class="method-card"><p>Developed the information architecture for a payment center built to scale beyond credit cards.</p></div>
+      <div class="method-card"><p>Ran collaboration sessions with product, engineering and other team members.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 PROTOTYPING ============ -->
+<section id="prototyping" style="background:var(--cream);">
+  <div class="wrap">
+    <div class="stage-head">
+      <div class="stage-num">04</div>
+      <div class="stage-txt">
+        <div class="sec-num" style="margin-bottom:2px;">Prototyping</div>
+        <h2 class="sec-title" style="font-size:28px;">From Wireframe to Clickable Prototype</h2>
+        <p class="stage-goal">Convert ideas into interactive prototypes for internal concept validation.</p>
+      </div>
+    </div>
+    <div class="method-grid">
+      <div class="method-card"><p>Converted approved wireframe concepts into high-fidelity designs and clickable prototypes.</p></div>
+      <div class="method-card"><p>Collaborated with the UX Research team to define what to learn and what to test.</p></div>
+      <div class="method-card"><p>Ran usability studies to test and validate the new payment concepts.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 VALIDATION ============ -->
+<section id="validation">
+  <div class="wrap">
+    <div class="stage-head">
+      <div class="stage-num">05</div>
+      <div class="stage-txt">
+        <div class="sec-num" style="margin-bottom:2px;">Usability Testing &amp; Validation</div>
+        <h2 class="sec-title" style="font-size:28px;">Testing With Real Cardholders</h2>
+        <p class="stage-goal">Use the interactive prototype to validate designs with real credit card users and identify usability issues.</p>
+      </div>
+    </div>
+    <div class="method-grid">
+      <div class="method-card"><p>Tested the clickable prototype directly with real TD credit card users.</p></div>
+      <div class="method-card"><p>Used the resulting test data to identify gaps and issues early, and adjusted the design accordingly.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 HANDOFF ============ -->
+<section id="handoff" style="background:var(--cream);">
+  <div class="wrap">
+    <div class="stage-head">
+      <div class="stage-num">06</div>
+      <div class="stage-txt">
+        <div class="sec-num" style="margin-bottom:2px;">Implementation — Developer Handoff</div>
+        <h2 class="sec-title" style="font-size:28px;">Handing Off to Engineering</h2>
+        <p class="stage-goal">Hand off design assets to the developers building the feature for release.</p>
+      </div>
+    </div>
+    <div class="method-grid">
+      <div class="method-card"><p>Prepared design specs and assets using Figma Dev Mode.</p></div>
+      <div class="method-card"><p>Provided documentation to support and guide the development team through build.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 POST-LAUNCH ============ -->
+<section id="postlaunch">
+  <div class="wrap">
+    <div class="stage-head">
+      <div class="stage-num">07</div>
+      <div class="stage-txt">
+        <div class="sec-num" style="margin-bottom:2px;">Post-Launch Evaluation</div>
+        <h2 class="sec-title" style="font-size:28px;">Monitoring What Happens After Launch</h2>
+        <p class="stage-goal">Monitor performance after the product or feature goes live.</p>
+      </div>
+    </div>
+    <div class="method-grid">
+      <div class="method-card"><p>Analyzed post-launch user feedback and metrics such as adoption rate.</p></div>
+      <div class="method-card"><p>Ran a new usability study to validate the release and inform design-enhancement recommendations for the next iteration.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="gallery-band">
+  <div class="wrap">
+    <div class="sec-num" style="color:var(--gold-light);">Selected Screens</div>
+    <h2 class="sec-title">The Payment Center, Across Platforms</h2>
+    <p class="sec-lede">Desktop, responsive and native iOS views from the delivered payment experience.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="img/TD-LG-001.png" alt="TD Payment Center — large screen view"><div class="cap">Desktop — Payment Center Overview</div></div>
+      <div class="gallery-item"><img src="img/TD-LG-002.png" alt="TD Payment Center — large screen, payment flow"><div class="cap">Desktop — Payment Flow</div></div>
+      <div class="gallery-item"><img src="img/TD-XS-Responsive-001.png" alt="TD Payment Center — responsive view"><div class="cap">Responsive — Small Screen</div></div>
+      <div class="gallery-item"><img src="img/TD-iOS-001.png" alt="TD Payment Center — native iOS view"><div class="cap">Native iOS</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div class="flogo">Frank Gaete</div>
+    <p>Case Study — TD Bank's Payment Center · Consumer Banking</p>
+    <a class="back2" href="index.html">Back to Portfolio</a>
+  </div>
+</footer>
+
+</body>
+</html>

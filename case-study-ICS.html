@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Frank Gaete — Broadridge's ICS Portal: Case Study</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Case study: designing a first-of-its-kind multi-tenant single sign-on portal unifying Broadridge's Bank &amp; Broker applications into one consistent experience.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1E2D4D; --navy-2:#16223B; --navy-tint:#EEF0F5;
+    --gold:#C6A664; --gold-light:#E4CFA0; --gold-tint:#F7EFDD;
+    --cream:#F7F5F0; --paper:#FFFFFF; --ink:#1B1D22; --ink-soft:#6B6F76; --line:#E4E1DA;
+    --sans:'Inter',sans-serif; --disp:'Jost',sans-serif; --serif:'Cormorant Garamond',serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  img{display:block;max-width:100%;}
+  a{text-decoration:none;color:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  .eyebrow{font-family:var(--disp);text-transform:uppercase;letter-spacing:.18em;font-size:12px;color:var(--gold);font-weight:500;}
+  .tag-label{font-family:var(--disp);text-transform:uppercase;letter-spacing:.14em;font-size:11px;color:var(--ink-soft);}
+  section{padding:80px 0;}
+  section.tight{padding:56px 0;}
+  h2.sec-title{font-family:var(--serif);font-weight:500;font-size:36px;color:var(--navy);}
+  .sec-num{font-family:var(--disp);font-size:13px;letter-spacing:.14em;color:var(--gold);margin-bottom:10px;}
+  .sec-lede{color:var(--ink-soft);font-size:15.5px;max-width:700px;margin-top:14px;line-height:1.75;}
+  .badge{position:fixed;top:14px;right:14px;background:var(--navy-2);color:#fff;font-family:var(--disp);font-size:11px;letter-spacing:.08em;padding:8px 14px;border-radius:20px;z-index:999;box-shadow:0 4px 14px rgba(0,0,0,.25);}
+
+  /* ---------- header ---------- */
+  header.site{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:100;}
+  header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 32px;gap:20px;flex-wrap:wrap;}
+  .logo{font-family:var(--disp);font-weight:600;font-size:17px;letter-spacing:.03em;color:var(--navy);display:flex;align-items:center;gap:10px;}
+  .logo .back{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);font-weight:500;border:1px solid var(--gold);border-radius:20px;padding:5px 12px;}
+  .logo .back:hover{background:var(--gold-tint);}
+  .stepper{display:flex;gap:2px;flex-wrap:wrap;}
+  .stepper a{font-family:var(--disp);font-size:11px;letter-spacing:.04em;color:var(--ink-soft);padding:8px 10px;border-radius:20px;}
+  .stepper a:hover{color:var(--navy);background:var(--gold-tint);}
+
+  /* ---------- title block ---------- */
+  .title-block{background:linear-gradient(165deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;padding:90px 0 70px;position:relative;overflow:hidden;}
+  .title-block:before{content:"";position:absolute;right:-100px;top:-100px;width:340px;height:340px;border:1px solid rgba(255,255,255,.08);border-radius:50%;}
+  .title-block .wrap{position:relative;z-index:2;}
+  .title-block h1{font-family:var(--serif);font-style:italic;font-weight:500;font-size:44px;line-height:1.2;max-width:780px;margin-top:16px;}
+  .title-block h1 span{color:var(--gold-light);}
+  .title-block p.sub{color:#c7cddb;font-size:16px;max-width:660px;margin-top:20px;line-height:1.7;}
+  .meta-row{display:flex;gap:28px;margin-top:36px;flex-wrap:wrap;}
+  .meta-row div{border-left:1px solid rgba(255,255,255,.22);padding-left:14px;}
+  .meta-row b{display:block;font-family:var(--disp);font-size:13px;color:var(--gold-light);}
+  .meta-row span{font-size:12px;color:#9aa2b5;text-transform:uppercase;letter-spacing:.06em;}
+
+  /* ---------- process stepper strip ---------- */
+  .process-strip{background:var(--cream);border-bottom:1px solid var(--line);}
+  .process-strip .wrap{display:flex;justify-content:space-between;padding:20px 32px;flex-wrap:wrap;gap:8px;}
+  .process-strip a{font-family:var(--disp);font-size:10.5px;letter-spacing:.03em;text-align:center;color:var(--ink-soft);display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;min-width:96px;}
+  .process-strip a b{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--gold);font-weight:500;}
+  .process-strip a:hover{color:var(--navy);}
+
+  /* ---------- generic cards ---------- */
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .fact-card{border:1px solid var(--line);border-radius:2px;padding:24px;background:#fff;}
+  .fact-card .stat{font-family:var(--serif);font-style:italic;font-size:32px;color:var(--gold);font-weight:500;display:block;margin-bottom:6px;}
+  .fact-card p{font-size:13px;color:var(--ink-soft);line-height:1.6;}
+
+  /* ---------- problem / solution ---------- */
+  .scope-grid{margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:2px;overflow:hidden;}
+  .scope-col{padding:30px 32px;}
+  .scope-col.changing{background:#fff;border-right:1px solid var(--line);}
+  .scope-col.staying{background:var(--cream);}
+  .scope-col .tag-label{margin-bottom:14px;}
+  .scope-col.changing .tag-label{color:#B85C5C;}
+  .scope-col.staying .tag-label{color:var(--gold);}
+  .scope-col p{font-size:14px;color:var(--ink-soft);line-height:1.75;}
+
+  /* ---------- pull quote ---------- */
+  .problem-block{background:var(--gold-tint);border:1px solid #ecd9ae;border-radius:2px;padding:36px 40px;margin-top:32px;}
+  .problem-block p.statement{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--navy);line-height:1.55;max-width:800px;}
+
+  /* ---------- approach pillars ---------- */
+  .pillar-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:32px;}
+  .pillar-card{border:1px solid var(--line);border-radius:2px;padding:26px;text-align:left;background:#fff;}
+  .pillar-card .tag-label{color:var(--gold);margin-bottom:10px;}
+  .pillar-card h3{font-family:var(--serif);font-style:italic;font-weight:500;font-size:19px;color:var(--navy);}
+  .pillar-card p{font-size:13.5px;color:var(--ink-soft);margin-top:10px;line-height:1.65;}
+  .approach-note{margin-top:26px;background:var(--navy);color:#fff;border-radius:2px;padding:22px 26px;font-size:13.5px;line-height:1.7;max-width:820px;}
+  .approach-note b{color:var(--gold-light);}
+
+  /* ---------- process stage sections ---------- */
+  .stage-num{font-family:var(--serif);font-style:italic;font-size:44px;color:var(--gold);font-weight:500;line-height:1;}
+  .stage-head{display:flex;gap:20px;align-items:flex-start;}
+  .method-grid{margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;}
+  .method-card{background:#fff;border:1px solid var(--line);border-left:3px solid var(--navy);border-radius:2px;padding:18px 20px;}
+  .method-card p{font-size:13px;color:var(--ink-soft);line-height:1.6;}
+  .stage-goal{margin-top:14px;font-family:var(--serif);font-style:italic;font-size:17px;color:var(--navy);max-width:680px;line-height:1.5;}
+
+  /* ---------- showcase image ---------- */
+  .showcase-band{background:var(--navy-2);color:#fff;}
+  .showcase-band h2.sec-title{color:#fff;}
+  .showcase-band .sec-lede{color:#aab1c2;}
+  .showcase-img{margin-top:40px;border-radius:2px;overflow:hidden;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);}
+  .showcase-img img{width:100%;display:block;}
+  .showcase-img .cap{padding:16px 20px;font-family:var(--disp);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:#c7cddb;}
+
+  footer{background:var(--navy-2);color:#aab1c2;padding:50px 0 28px;}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .foot-inner .flogo{font-family:var(--disp);font-weight:600;font-size:16px;color:#fff;}
+  .foot-inner p{font-size:12px;color:#7d859c;}
+  .foot-inner a.back2{font-family:var(--disp);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-light);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:8px 16px;}
+
+  @media(max-width:980px){
+    .grid-2,.grid-3,.scope-grid,.pillar-grid{grid-template-columns:1fr;}
+    .scope-col.changing{border-right:none;border-bottom:1px solid var(--line);}
+    .stepper,.process-strip .wrap{display:none;}
+    .stage-head{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<div class="badge">CASE STUDY — Fintech</div>
+
+<header class="site">
+  <div class="wrap">
+    <div class="logo"><a href="index.html">Frank Gaete</a><a class="back" href="index.html">← Portfolio</a></div>
+    <nav class="stepper">
+      <a href="#discovery">Discovery</a>
+      <a href="#definition">Define</a>
+      <a href="#ideation">Ideate</a>
+      <a href="#prototyping">Prototype</a>
+      <a href="#validation">Validate</a>
+      <a href="#handoff">Handoff</a>
+      <a href="#postlaunch">Post-Launch</a>
+    </nav>
+  </div>
+</header>
+
+<div class="title-block" id="top">
+  <div class="wrap">
+    <div class="eyebrow">Case Study · Fintech</div>
+    <h1>One Sign-On, Every Bank &amp; Broker App — <span>Broadridge's ICS Portal</span></h1>
+    <p class="sub">Customers licensing multiple Broadridge ICS applications had to sign in to each one separately, and could only ever view one application's data at a time. This is how that fragmented experience became a single, multi-tenant SSO portal — a first-of-its-kind effort at Broadridge that took over a year to build.</p>
+    <div class="meta-row">
+      <div><b>Broadridge Financial Solutions</b><span>Client</span></div>
+      <div><b>Lead UI/UX Architect</b><span>Role</span></div>
+      <div><b>Multi-Tenant SSO Portal</b><span>Scope</span></div>
+      <div><b>1+ Year</b><span>Duration</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="process-strip">
+  <div class="wrap">
+    <a href="#discovery"><b>01</b>Discovery</a>
+    <a href="#definition"><b>02</b>Define</a>
+    <a href="#ideation"><b>03</b>Ideate</a>
+    <a href="#prototyping"><b>04</b>Prototype</a>
+    <a href="#validation"><b>05</b>Validate</a>
+    <a href="#handoff"><b>06</b>Handoff</a>
+    <a href="#postlaunch"><b>07</b>Post-Launch</a>
+  </div>
+</div>
+
+<!-- ============ THE CLIENT ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-num">The Client</div>
+    <h2 class="sec-title">Broadridge Financial Solutions</h2>
+    <p class="sec-lede">A global fintech company providing essential technology-driven solutions, data analytics, and operations services to financial institutions, public companies, and investors — a key infrastructure provider for the industry.</p>
+    <div class="grid-2" style="margin-top:32px;">
+      <div class="fact-card"><span class="stat">$15T+</span><p>In daily trading volume processed through Broadridge's infrastructure.</p></div>
+      <div class="fact-card"><span class="stat">80%+</span><p>Of North American corporate issuer proxy communications handled by Broadridge.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECT OVERVIEW ============ -->
+<section style="background:var(--cream);">
+  <div class="wrap">
+    <div class="sec-num">Project Overview</div>
+    <h2 class="sec-title">From Broadridge ICS to a Single Client Portal</h2>
+    <p class="sec-lede">Broadridge Investor Communication Solutions, Inc. (ICS) is a leading provider of investor communication services — proxy voting, annual report distribution, and regulatory reporting for equity and mutual fund investors. Customers licensing several ICS SaaS applications had to sign in to each one individually; there was no single sign-on. My team helped identify this gap, and I was asked to start ideating and designing concepts for a new ICS SSO portal that would let customers access every licensed application and service from one place.</p>
+    <p class="sec-lede">Today, the ICS Portal (MyService.Broadridge.com) gives issuer clients online access to proxy voting, material mailing status, and investor communication tools. Clients use it to manage beneficial securityholder mailings, track jobs, verify mailings, check job status, and manage compliance — all from a single, unified experience.</p>
+  </div>
+</section>
+
+<!-- ============ PROBLEM / SOLUTION ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-num">The Challenge</div>
+    <h2 class="sec-title">Several Applications, Built in Silos</h2>
+    <div class="scope-grid">
+      <div class="scope-col changing">
+        <div class="tag-label">Problem</div>
+        <p>Several "Bank and Broker" applications had been designed and developed in silos, resulting in disparate designs, workflows and environments. A client licensing multiple applications had to sign in to each one individually, and was restricted to viewing data from only one application at a time. Users needed true SSO — the ability to view and leverage information, data and assets across every application they were licensed for.</p>
+      </div>
+      <div class="scope-col staying">
+        <div class="tag-label">Solution</div>
+        <p>Create a multi-tenant portal that included all licensed applications with a consistent, modern UI/UX, single sign-on functionality, security features, and dashboard views with cross-application data — without having to redesign or redevelop each standalone application. Sounds easy, right?</p>
+      </div>
+    </div>
+    <div class="problem-block">
+      <p class="statement">"This outlines how design considerations and lifecycle were applied to one of the largest projects I worked on — a project that included several Bank and Broker applications, was a first-of-its-kind at Broadridge, and took over a year to complete."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLANNING + APPROACH ============ -->
+<section style="background:var(--cream);">
+  <div class="wrap">
+    <div class="sec-num">Planning &amp; UI/UX Approach</div>
+    <h2 class="sec-title">Sprint Zero, Then an API-First Path to Consistency</h2>
+    <p class="sec-lede">Several concurrent efforts fell into "sprint 0": deciding on portal software (third-party vs. an in-house build), selecting which applications to include, reviewing client feedback that supported the need for a portal, auditing each standalone application's design challenges, and resource and cost planning.</p>
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="tag-label">As UI/UX Team Lead</div>
+        <h3>Involved in Every Design Decision</h3>
+        <p>From sprint 0 onward — portal design inspiration, UX research, and evaluating third-party portal software to understand what UI/UX features and functionality it offered.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="tag-label">Engineering Partnership</div>
+        <h3>APIs In, Not Rebuilds</h3>
+        <p>To avoid redesigning or redeveloping entire standalone applications, engineers built APIs into parts of each app to pull in data and functionality — letting the portal present a consistent, modern UI/UX for all applications, reusing existing patterns where they worked and creating new ones where they didn't.</p>
+      </div>
+    </div>
+    <div class="approach-note">This project was enormously challenging, but <b>we had a lot of fun with it</b> — and it received great feedback from our clients.</div>
+  </div>
+</section>
+
+<!-- ============ 01 DISCOVERY ============ -->
+<section id="discovery">
+  <div class="wrap">
+    <div class="stage-head">
+      <div class="stage-num">01</div>
+      <div class="stage-txt">
+        <div class="sec-num" style="margin-bottom:2px;">Discovery</div>
+        <h2 class="sec-title" style="font-size:28px;">Understanding the Gap</h2>
+        <p class="stage-goal">Understand user needs, motivations, behaviors, and pain points.</p>
+      </div>
+    </div>
+    <div class="method-grid">
+      <div class="method-card"><p>Ran UX research including ICS user interviews, surveys, A/B tests and usability tests.</p></div>
+      <div class="method-card"><p>Researched third-party SSO portal solutions alongside an in-house custom build.</p></div>
+      <div class="method-card"><p>Completed a competitive analysis, market research and stakeholder interviews.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 DEFINE ============ -->
+<section id="definition" style="background:var(--cream);">
+  <div class="wrap">
+    <div class="stage-head">
+      <div class="stage-num">02</div>
+      <div class="stage-txt">
+        <div class="sec-num" style="margin-bottom:2px;">Definition &amp; Analysis</div>
+        <h2 class="sec-title" style="font-size:28px;">Distilling Research into Insight</h2>
+        <p class="stage-goal">Distill research findings into actionable insights.</p>
+      </div>
+    </div>
+    <div class="method-grid">
+      <div class="method-card"><p>Reviewed and created user personas across the licensed application base.</p></div>
+      <div class="method-card"><p>Built empathy maps and user journey maps across the fragmented sign-in experience.</p></div>
+      <div class="method-card"><p>Defined clear problem statements to align stakeholders before ideation.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 IDEATION ============ -->
+<section id="ideation">
+  <div class="wrap">
+    <div class="stage-head">
+      <div class="stage-num">03</div>
+      <div class="stage-txt">
+        <div class="sec-num" style="margin-bottom:2px;">Ideation</div>
+        <h2 class="sec-title" style="font-size:28px;">Developing the Solution Space</h2>
+        <p class="stage-goal">Develop potential solutions for the defined problems.</p>
+      </div>
+    </div>
+    <div class="method-grid">
+      <div class="method-card"><p>Sketched concepts for a unified portal shell across all licensed applications.</p></div>
+      <div class="method-card"><p>Mapped user flows across sign-on, navigation and cross-application data views.</p></div>
+      <div class="method-card"><p>Developed the information architecture for a true multi-tenant portal.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 PROTOTYPING ============ -->
+<section id="prototyping" style="background:var(--cream);">
+  <div class="wrap">
+    <div class="stage-head">
+      <div class="stage-num">04</div>
+      <div class="stage-txt">
+        <div class="sec-num" style="margin-bottom:2px;">Prototyping</div>
+        <h2 class="sec-title" style="font-size:28px;">From Wireframe to Clickable Prototype</h2>
+        <p class="stage-goal">Convert ideas into interactive prototypes for testing and concept validation.</p>
+      </div>
+    </div>
+    <div class="method-grid">
+      <div class="method-card"><p>Created low-fidelity wireframes to facilitate high-fidelity clickable prototypes.</p></div>
+      <div class="method-card"><p>Converted approved concepts into high-fidelity, testable prototype flows.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 VALIDATION ============ -->
+<section id="validation">
+  <div class="wrap">
+    <div class="stage-head">
+      <div class="stage-num">05</div>
+      <div class="stage-txt">
+        <div class="sec-num" style="margin-bottom:2px;">Usability Testing &amp; Validation</div>
+        <h2 class="sec-title" style="font-size:28px;">Testing With Real Clients</h2>
+        <p class="stage-goal">Validate designs with real users to identify usability issues.</p>
+      </div>
+    </div>
+    <div class="method-grid">
+      <div class="method-card"><p>Tested the clickable prototype directly with real ICS clients for concept validation.</p></div>
+      <div class="method-card"><p>Used the resulting test data to identify gaps and issues early, and adjusted accordingly.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 HANDOFF ============ -->
+<section id="handoff" style="background:var(--cream);">
+  <div class="wrap">
+    <div class="stage-head">
+      <div class="stage-num">06</div>
+      <div class="stage-txt">
+        <div class="sec-num" style="margin-bottom:2px;">Implementation — Developer Handoff</div>
+        <h2 class="sec-title" style="font-size:28px;">Handing Off to Engineering</h2>
+        <p class="stage-goal">Hand off design assets to the developers building the portal for release.</p>
+      </div>
+    </div>
+    <div class="method-grid">
+      <div class="method-card"><p>Prepared design specs, assets and documentation for the development team.</p></div>
+      <div class="method-card"><p>Guided engineers through the API-integration approach for each standalone app.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 POST-LAUNCH ============ -->
+<section id="postlaunch">
+  <div class="wrap">
+    <div class="stage-head">
+      <div class="stage-num">07</div>
+      <div class="stage-txt">
+        <div class="sec-num" style="margin-bottom:2px;">Post-Launch Evaluation</div>
+        <h2 class="sec-title" style="font-size:28px;">Monitoring What Happens After Launch</h2>
+        <p class="stage-goal">Monitor performance after the portal goes live.</p>
+      </div>
+    </div>
+    <div class="method-grid">
+      <div class="method-card"><p>Analyzed post-launch user feedback and metrics to inform design-enhancement recommendations.</p></div>
+      <div class="method-card"><p>Continued client feedback loops fed the next round of portal improvements.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SHOWCASE ============ -->
+<section class="showcase-band">
+  <div class="wrap">
+    <div class="sec-num" style="color:var(--gold-light);">Selected Screen</div>
+    <h2 class="sec-title">The ICS Portal — Unified Dashboard</h2>
+    <p class="sec-lede">A single, cross-application dashboard replacing what used to be separate sign-ins for every licensed ICS application.</p>
+    <div class="showcase-img">
+      <img src="img/site_ics-portal-dashboard_800x600.jpg" alt="Broadridge ICS Portal dashboard">
+      <div class="cap">Broadridge ICS Portal — MyService.Broadridge.com</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div class="flogo">Frank Gaete</div>
+    <p>Case Study — Broadridge's ICS Portal · Fintech</p>
+    <a class="back2" href="index.html">Back to Portfolio</a>
+  </div>
+</footer>
+
+</body>
+</html>

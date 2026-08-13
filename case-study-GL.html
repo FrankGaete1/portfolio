@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Glice Lima — Brand Refresh: Design Process</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1E2D4D; --navy-2:#16223B; --navy-tint:#EEF0F5;
+    --gold:#C6A664; --gold-light:#E4CFA0; --gold-tint:#F7EFDD;
+    --cream:#F7F5F0; --paper:#FFFFFF; --ink:#1B1D22; --ink-soft:#6B6F76; --line:#E4E1DA;
+    --sans:'Inter',sans-serif; --disp:'Jost',sans-serif; --serif:'Cormorant Garamond',serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  img{display:block;max-width:100%;}
+  a{text-decoration:none;color:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  .eyebrow{font-family:var(--disp);text-transform:uppercase;letter-spacing:.18em;font-size:12px;color:var(--gold);font-weight:500;}
+  .tag-label{font-family:var(--disp);text-transform:uppercase;letter-spacing:.14em;font-size:11px;color:var(--ink-soft);}
+  section{padding:80px 0;}
+  section.tight{padding:56px 0;}
+  h2.sec-title{font-family:var(--serif);font-weight:500;font-size:36px;color:var(--navy);}
+  .sec-num{font-family:var(--disp);font-size:13px;letter-spacing:.14em;color:var(--gold);margin-bottom:10px;}
+  .sec-lede{color:var(--ink-soft);font-size:15.5px;max-width:640px;margin-top:14px;line-height:1.75;}
+  .badge{position:fixed;top:14px;right:14px;background:var(--navy-2);color:#fff;font-family:var(--disp);font-size:11px;letter-spacing:.08em;padding:8px 14px;border-radius:20px;z-index:999;box-shadow:0 4px 14px rgba(0,0,0,.25);}
+
+  /* ---------- header ---------- */
+  header.site{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:100;}
+  header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 32px;gap:20px;}
+  .logo img{height:38px;width:auto;}
+  .stepper{display:flex;gap:2px;flex-wrap:wrap;}
+  .stepper a{font-family:var(--disp);font-size:11.5px;letter-spacing:.05em;color:var(--ink-soft);padding:8px 12px;border-radius:20px;}
+  .stepper a:hover{color:var(--navy);background:var(--gold-tint);}
+
+  /* ---------- title block ---------- */
+  .title-block{background:linear-gradient(165deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;padding:90px 0 70px;position:relative;overflow:hidden;}
+  .title-block:before{content:"";position:absolute;right:-100px;top:-100px;width:340px;height:340px;border:1px solid rgba(255,255,255,.08);border-radius:50%;}
+  .title-block .wrap{position:relative;z-index:2;}
+  .title-block h1{font-family:var(--serif);font-style:italic;font-weight:500;font-size:48px;line-height:1.16;max-width:760px;margin-top:16px;}
+  .title-block h1 span{color:var(--gold-light);}
+  .title-block p.sub{color:#c7cddb;font-size:16px;max-width:600px;margin-top:20px;}
+  .meta-row{display:flex;gap:28px;margin-top:36px;flex-wrap:wrap;}
+  .meta-row div{border-left:1px solid rgba(255,255,255,.22);padding-left:14px;}
+  .meta-row b{display:block;font-family:var(--disp);font-size:13px;color:var(--gold-light);}
+  .meta-row span{font-size:12px;color:#9aa2b5;text-transform:uppercase;letter-spacing:.06em;}
+
+  /* ---------- process stepper strip ---------- */
+  .process-strip{background:var(--cream);border-bottom:1px solid var(--line);}
+  .process-strip .wrap{display:flex;justify-content:space-between;padding:22px 32px;flex-wrap:wrap;gap:10px;}
+  .process-strip a{font-family:var(--disp);font-size:11.5px;letter-spacing:.05em;text-align:center;color:var(--ink-soft);display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;min-width:110px;}
+  .process-strip a b{font-family:var(--serif);font-style:italic;font-size:20px;color:var(--gold);font-weight:500;}
+  .process-strip a:hover{color:var(--navy);}
+
+  /* ---------- generic cards ---------- */
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .card{background:var(--cream);border-radius:2px;padding:26px;}
+  .card h3{font-family:var(--disp);font-size:15.5px;font-weight:500;color:var(--navy);}
+  .card .stat{font-family:var(--serif);font-style:italic;font-size:30px;color:var(--gold);font-weight:500;display:block;margin-bottom:8px;}
+  .card p{font-size:13.5px;color:var(--ink-soft);margin-top:8px;line-height:1.65;}
+  .card .who{font-family:var(--disp);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-top:12px;}
+
+  /* ---------- 01 discover ---------- */
+  .platform-card{border:1px solid var(--line);border-radius:2px;padding:24px;background:#fff;}
+  .platform-card .plat-name{font-family:var(--disp);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+  .platform-card h3{font-family:var(--serif);font-style:italic;font-weight:500;font-size:19px;color:var(--navy);}
+  .platform-card p{font-size:13px;color:var(--ink-soft);margin-top:10px;line-height:1.65;}
+  .platform-card .src{font-family:var(--disp);font-size:11px;color:var(--ink-soft);margin-top:14px;padding-top:12px;border-top:1px solid var(--line);}
+
+  /* ---------- site audit ---------- */
+  .audit-tag{display:inline-block;font-family:var(--disp);font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:#F4D9D9;color:#9A3B3B;padding:5px 12px;border-radius:20px;margin-bottom:14px;}
+  .legacy-site{background:#fff;font-family:Arial,Helvetica,sans-serif;color:#333;border:1px solid var(--line);border-top:none;border-radius:0 0 4px 4px;}
+  .legacy-site .lheader{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid #eee;flex-wrap:wrap;gap:10px;}
+  .legacy-site .lheader img.llogo{height:32px;}
+  .legacy-site .lnav{display:flex;gap:16px;font-size:12.5px;color:#555;}
+  .legacy-site .lflags{display:flex;gap:6px;align-items:center;}
+  .legacy-site .lflags img{width:16px;height:16px;border-radius:2px;}
+  .legacy-site .lhero{display:flex;gap:24px;align-items:center;padding:28px 20px;flex-wrap:wrap;}
+  .legacy-site .lhero img{width:120px;height:120px;object-fit:cover;border-radius:6px;flex:none;}
+  .legacy-site .lhero h1{font-size:20px;font-weight:700;color:#222;}
+  .legacy-site .lhero p{font-size:12.5px;color:#555;margin-top:8px;max-width:420px;line-height:1.55;}
+  .legacy-site .lbtns{margin-top:14px;display:flex;gap:8px;}
+  .legacy-site .lbtns a{font-size:11.5px;padding:8px 14px;background:#2b6cb0;color:#fff;border-radius:3px;}
+  .legacy-site .lbtns a.wa{background:#25D366;}
+  .legacy-site .lprops{display:flex;gap:12px;padding:0 20px 22px;flex-wrap:wrap;border-bottom:1px solid #eee;}
+  .legacy-site .lprops div{flex:1;min-width:120px;}
+  .legacy-site .lprops img{width:100%;height:76px;object-fit:cover;border-radius:4px;}
+  .legacy-site .lprops span{font-size:10.5px;color:#555;display:block;margin-top:6px;line-height:1.4;}
+  .legacy-site .lfoot{padding:12px 20px;font-size:10.5px;color:#999;}
+  .audit-grid{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .audit-card{background:#fff;border:1px solid var(--line);border-left:3px solid #B85C5C;border-radius:2px;padding:20px;}
+  .audit-card .tag-label{color:#B85C5C;}
+  .audit-card h3{font-family:var(--disp);font-size:14px;font-weight:500;color:var(--navy);margin-top:8px;}
+  .audit-card p{font-size:12.5px;color:var(--ink-soft);margin-top:8px;line-height:1.6;}
+  .audit-tie{margin-top:26px;background:var(--navy);color:#fff;border-radius:2px;padding:22px 26px;font-size:13.5px;line-height:1.7;}
+  .audit-tie b{color:var(--gold-light);}
+
+  .persona-card{background:var(--navy);color:#fff;border-radius:2px;padding:24px;}
+  .persona-card .idx{font-family:var(--serif);font-style:italic;font-size:26px;color:var(--gold-light);}
+  .persona-card h3{font-family:var(--disp);font-size:14px;font-weight:500;margin-top:10px;line-height:1.4;}
+  .persona-card p{font-size:12.5px;color:#c7cddb;margin-top:10px;line-height:1.6;}
+
+  /* ---------- 02 define ---------- */
+  .problem-block{background:var(--gold-tint);border:1px solid #ecd9ae;border-radius:2px;padding:40px;}
+  .problem-block p.statement{font-family:var(--serif);font-style:italic;font-size:24px;color:var(--navy);line-height:1.5;max-width:820px;}
+  .gap-list{margin-top:30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;}
+  .scope-grid{margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:2px;overflow:hidden;}
+  .scope-col{padding:26px 28px;}
+  .scope-col.changing{background:#fff;border-right:1px solid var(--line);}
+  .scope-col.staying{background:var(--cream);}
+  .scope-col .tag-label{margin-bottom:14px;}
+  .scope-col.changing .tag-label{color:var(--gold);}
+  .scope-col.staying .tag-label{color:var(--ink-soft);}
+  .scope-col ul{margin-left:16px;}
+  .scope-col li{font-size:13px;color:var(--ink-soft);margin-bottom:10px;line-height:1.6;}
+  .scope-col li b{color:var(--navy);font-weight:600;}
+  .gap-item{background:#fff;border-radius:2px;padding:20px;border-left:3px solid var(--navy);}
+  .gap-item .tag-label{color:var(--gold);}
+  .gap-item p{font-size:13.5px;color:var(--ink-soft);margin-top:10px;line-height:1.6;}
+
+  /* ---------- 03 plan ---------- */
+  .pillar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .pillar-card{border:1px solid var(--line);border-radius:2px;padding:24px;text-align:left;}
+  .pillar-card .n{font-family:var(--serif);font-style:italic;font-size:34px;color:var(--gold);font-weight:500;}
+  .pillar-card h3{font-family:var(--disp);font-size:14.5px;font-weight:500;color:var(--navy);margin-top:6px;}
+  .pillar-card p{font-size:12.5px;color:var(--ink-soft);margin-top:10px;line-height:1.6;}
+  .site-map{margin-top:36px;display:flex;flex-wrap:wrap;gap:10px;}
+  .site-map span{font-family:var(--disp);font-size:12px;padding:10px 16px;border:1px solid var(--line);border-radius:30px;color:var(--navy);background:var(--cream);}
+
+  /* ---------- 04/05 frame previews ---------- */
+  .frame-preview{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:4px;background:#fff;aspect-ratio:16/11;box-shadow:0 10px 26px rgba(30,45,77,.08);}
+  .frame-inner{position:absolute;top:0;left:0;transform-origin:top left;}
+  .frame-inner iframe{border:none;display:block;pointer-events:none;}
+  .frame-caption{margin-top:14px;}
+  .frame-caption h3{font-family:var(--disp);font-size:14px;font-weight:500;color:var(--navy);}
+  .frame-caption p{font-size:12.5px;color:var(--ink-soft);margin-top:6px;line-height:1.6;}
+  .browser-chrome{background:#EDEBE6;border:1px solid var(--line);border-bottom:none;border-radius:4px 4px 0 0;padding:9px 12px;display:flex;gap:6px;}
+  .browser-chrome span{width:9px;height:9px;border-radius:50%;background:#D3CFC6;display:block;}
+  .frame-block .frame-preview{border-radius:0 0 4px 4px;}
+  .wf-list{margin-top:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .wf-list div{background:var(--cream);border-radius:2px;padding:16px 18px;font-size:12.5px;color:var(--ink-soft);}
+  .wf-list b{display:block;font-family:var(--disp);font-size:12px;color:var(--navy);margin-bottom:4px;}
+  .concept-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:36px;}
+  .flow-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:22px;}
+  .flow-row .step{font-family:var(--disp);font-size:12px;padding:9px 14px;border:1px solid var(--line);border-radius:20px;color:var(--navy);background:#fff;}
+  .flow-row .arrow{color:var(--gold);font-family:var(--disp);}
+
+  /* ---------- 06 validate ---------- */
+  .validate-band{background:var(--navy-2);color:#fff;}
+  .validate-band h2.sec-title{color:#fff;}
+  .validate-band .sec-lede{color:#aab1c2;}
+  .rq-list{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .rq-list div{border:1px solid rgba(255,255,255,.16);border-radius:2px;padding:18px 20px;font-size:13.5px;color:#dfe2ea;}
+  .rq-list span{font-family:var(--serif);font-style:italic;color:var(--gold-light);font-size:16px;margin-right:8px;}
+  .round-grid{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:26px;}
+  .round-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:2px;padding:26px;}
+  .round-card .tag-label{color:var(--gold-light);}
+  .round-card h3{font-family:var(--serif);font-style:italic;font-weight:500;font-size:22px;color:#fff;margin-top:8px;}
+  .round-card ul{margin:16px 0 0 18px;font-size:13px;color:#c7cddb;line-height:1.8;}
+  .round-card .meta-line{margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.14);font-size:12px;color:#9aa2b5;}
+  .metric-row{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .metric-row .m{text-align:center;padding:22px;border:1px solid rgba(255,255,255,.14);border-radius:2px;}
+  .metric-row .m b{display:block;font-family:var(--serif);font-style:italic;font-size:30px;color:var(--gold-light);font-weight:500;}
+  .metric-row .m span{font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:#9aa2b5;}
+  .timeline{margin-top:40px;display:flex;gap:0;border-top:1px solid rgba(255,255,255,.16);padding-top:24px;}
+  .timeline .t{flex:1;padding:0 16px;border-left:1px solid rgba(255,255,255,.16);}
+  .timeline .t:first-child{border-left:none;padding-left:0;}
+  .timeline .t b{display:block;font-family:var(--disp);font-size:12px;color:var(--gold-light);letter-spacing:.05em;}
+  .timeline .t span{font-size:12px;color:#aab1c2;display:block;margin-top:6px;line-height:1.6;}
+
+  footer{background:var(--navy-2);color:#aab1c2;padding:50px 0 28px;}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .foot-inner img{height:34px;}
+  .foot-inner p{font-size:12px;color:#7d859c;}
+
+  @media(max-width:980px){
+    .grid-2,.grid-3,.grid-4,.pillar-grid,.gap-list,.concept-grid,.round-grid,.rq-list,.metric-row,.wf-list{grid-template-columns:1fr;}
+    .stepper,.process-strip .wrap{display:none;}
+    .timeline{flex-direction:column;}
+    .timeline .t{border-left:none;border-top:1px solid rgba(255,255,255,.16);padding:16px 0 0;}
+  }
+</style>
+</head>
+<body>
+
+<div class="badge">DESIGN PROCESS — Brand Refresh</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="#top"><img src="img/logo-GliceLima-001.jpg" alt="Glice Lima"></a>
+    <nav class="stepper">
+      <a href="#discover">01 Discover</a>
+      <a href="#define">02 Define</a>
+      <a href="#plan">03 Plan</a>
+      <a href="#ideate">04 Ideate</a>
+      <a href="#design">05 Design &amp; Prototype</a>
+      <a href="#validate">06 Validate</a>
+    </nav>
+  </div>
+</header>
+
+<div class="title-block" id="top">
+  <div class="wrap">
+    <div class="eyebrow">Case Study · Design Process</div>
+    <h1>A Brand Refresh, Backed by Research — <span>Glice Parente to Glice Lima</span></h1>
+    <p class="sub">Glice Lima Parente has always marketed under her full name. This project is a slight rebrand — simplifying her public identity to "Glice Lima" — paired with a digital marketing plan built to finally match her 15-year, tri-county track record. Here's how it moved from a brand and site audit through wireframes, high-fidelity homepage concepts, a clickable prototype, and a plan to validate the recommended design with real buyers.</p>
+    <div class="meta-row">
+      <div><b>Glice Lima Parente → Glice Lima</b><span>Brand Simplification</span></div>
+      <div><b>Miami-Dade · Broward · Palm Beach</b><span>Market Scope</span></div>
+      <div><b>6 Stages</b><span>Discover → Validate</span></div>
+      <div><b>August 2026</b><span>Prepared</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="process-strip">
+  <div class="wrap">
+    <a href="#discover"><b>01</b>Discover</a>
+    <a href="#define"><b>02</b>Define</a>
+    <a href="#plan"><b>03</b>Plan</a>
+    <a href="#ideate"><b>04</b>Ideate</a>
+    <a href="#design"><b>05</b>Design &amp; Prototype</a>
+    <a href="#validate"><b>06</b>Validate</a>
+  </div>
+</div>
+
+<!-- ============ 01 DISCOVER ============ -->
+<section id="discover">
+  <div class="wrap">
+    <div class="sec-num">01 — Discover</div>
+    <h2 class="sec-title">Competitive Analysis &amp; Audience Research</h2>
+    <p class="sec-lede">Before any design work started, the process opened with three research tracks: a direct audit of Glice's current live site and brand identity, a competitive review of how top-producing luxury brokers win on Instagram, YouTube, LinkedIn and TikTok, and an audience-research pass to define exactly who the refreshed brand and site have to convert.</p>
+
+    <div style="margin-top:44px;">
+      <span class="audit-tag">Current State</span>
+      <div class="tag-label" style="margin-bottom:16px;">Site &amp; Brand Audit — glicefloridarealtor.com</div>
+      <p class="sec-lede" style="margin-top:0;max-width:820px;">The starting point for discovery was Glice's own live site and current brand identity. She markets under her full name, Glice Parente — matching her legal name, Glice Lima Parente. The refresh underway simplifies that public identity to "Glice Lima," dropping the surname rather than changing who she is. Auditing the live site directly — rather than working from assumptions — turned up the exact evidence behind the gaps defined in the next stage.</p>
+
+      <div class="browser-chrome" style="margin-top:20px;"><span></span><span></span><span></span><span style="width:auto;height:auto;border-radius:0;background:none;color:#8a8578;font-family:var(--disp);font-size:11px;margin-left:8px;">glicefloridarealtor.com</span></div>
+      <div class="legacy-site">
+        <div class="lheader">
+          <img class="llogo" src="https://glicefloridarealtor.com/wp-content/uploads/2023/12/logo-glice-parente-florida-realtor.png" alt="Glice Parente Florida Realtor — current logo">
+          <div class="lnav">
+            <span>Home</span><span>Properties</span><span>Blog</span><span>Contact</span>
+            <span class="lflags">
+              <img src="https://glicefloridarealtor.com/wp-content/plugins/translatepress-multilingual/assets/images/flags/en_US.png" alt="EN">
+              <img src="https://glicefloridarealtor.com/wp-content/plugins/translatepress-multilingual/assets/images/flags/pt_BR.png" alt="PT">
+            </span>
+          </div>
+        </div>
+        <div class="lhero">
+          <img src="https://glicefloridarealtor.com/wp-content/uploads/2023/12/glice-parente-personal-photo.png" alt="Glice Parente">
+          <div>
+            <h1>Glice Parente</h1>
+            <p>"Florida Licensed Real Estate Broker with more than 12 years of experience representing Americans, Brazilians and other foreign country's clients." Top Producer for the last seven years.</p>
+            <div class="lbtns"><a href="#">Properties</a><a class="wa" href="#">Contact me (WhatsApp)</a></div>
+          </div>
+        </div>
+        <div class="lprops">
+          <div><img src="https://glicefloridarealtor.com/wp-content/uploads/2024/02/2601-de-soto-blvd-coral-gables-fl-33134-1024x683.jpg" alt="Coral Gables listing"><span>2601 De Soto Blvd, Coral Gables</span></div>
+          <div><img src="https://glicefloridarealtor.com/wp-content/uploads/2024/02/2229-n-bayrd-miami-beach-fl-33140.jpg" alt="Miami Beach listing"><span>2229 N Bay Rd, Miami Beach</span></div>
+          <div><img src="https://glicefloridarealtor.com/wp-content/uploads/2024/02/1540-lugo-ave-coral-gables-florida-33160.jpg" alt="Coral Gables listing"><span>1540 Lugo Ave, Coral Gables</span></div>
+        </div>
+        <div class="lfoot">© 2026 Glice Parente Florida Realtor — Instagram · Facebook · LinkedIn</div>
+      </div>
+      <p class="sec-lede" style="margin-top:12px;max-width:820px;font-size:12.5px;">Recreated from the live site for reference, using its actual logo, hero photo and listing images — glicefloridarealtor.com, captured August 2026.</p>
+
+      <div class="audit-grid">
+        <div class="audit-card">
+          <div class="tag-label">Branding &amp; Positioning</div>
+          <h3>Legacy name, understated track record</h3>
+          <p>The live site still uses the full name "Glice Parente" rather than the simplified "Glice Lima" identity the refresh is moving toward. Its bio leads with 12 years of experience and "Top Producer for the last seven years" — short of the 15-year, tri-county positioning the refresh is built on. No mention of commercial expertise or the 360° network.</p>
+        </div>
+        <div class="audit-card">
+          <div class="tag-label">Geographic Coverage</div>
+          <h3>Miami-only, with one typo'd exception</h3>
+          <p>14 listings total across Home and Properties, almost entirely in Miami-Dade (Coral Gables, Miami Beach, Brickell). The one Palm Beach-area listing has "Delray" misspelled "Delrey" in its own URL and title. No Broward presence, no county or neighborhood navigation exists.</p>
+        </div>
+        <div class="audit-card">
+          <div class="tag-label">Language &amp; Accessibility</div>
+          <h3>Bilingual, not trilingual</h3>
+          <p>The header offers English and Portuguese only (via TranslatePress). There is no Spanish toggle — a direct gap against the plan's EN/PT/ES positioning built specifically to reach Latin American buyers from Brazil, Colombia and Argentina.</p>
+        </div>
+        <div class="audit-card">
+          <div class="tag-label">Lead Generation</div>
+          <h3>Two shallow conversion paths</h3>
+          <p>The only conversions on the site are a WhatsApp link and a generic name/email/message contact form. There's no market-report opt-in, no CRM segmentation by county or language, and no scheduling tool.</p>
+        </div>
+        <div class="audit-card">
+          <div class="tag-label">Listings &amp; Technology</div>
+          <h3>No live inventory</h3>
+          <p>Properties are static WordPress posts linked via "Read More" — there is no MLS/IDX feed, no filtering by price, beds, baths or county, and listings must be manually rebuilt as they sell.</p>
+        </div>
+        <div class="audit-card">
+          <div class="tag-label">Trust &amp; Social Proof</div>
+          <h3>Real testimonials, no amplification</h3>
+          <p>Five genuine client testimonials (Studart, Taillet, Chandrashekhar, Lima, Fainshmidt) are a real asset worth carrying forward — but there are no press mentions, no video testimonials, and no sales-volume stats anywhere on the site.</p>
+        </div>
+      </div>
+      <div class="audit-tie">Every finding above lines up directly with the gaps defined in the next stage: this isn't a site that simply needs a fresh coat of paint — it's structurally unable to carry the refreshed <b>Glice Lima</b> identity, or her <b>15 years of track record, tri-county coverage, trilingual reach, and 360° service network</b> the plan is built around.</div>
+    </div>
+
+    <div style="margin-top:56px;">
+      <div class="tag-label" style="margin-bottom:16px;">Competitive Analysis — Platform Findings</div>
+      <div class="grid-4">
+        <div class="platform-card">
+          <div class="plat-name">Instagram</div>
+          <h3>Dina Goldentayer &amp; Chad Carroll</h3>
+          <p>Goldentayer's recurring #StepInsideWithMe format is tied to $200M+ in attributed career sales. Carroll (480K+ followers) already covers Miami, Fort Lauderdale &amp; Palm Beach — Glice's exact footprint — with disciplined Just Listed / Under Contract / Sold posting.</p>
+          <div class="src">The Real Deal · Luxury Presence</div>
+        </div>
+        <div class="platform-card">
+          <div class="plat-name">YouTube</div>
+          <h3>Matouk, Serhant &amp; Yilmazer</h3>
+          <p>Boca Raton-based Matouk makes viewers feel they're touring alongside him. Serhant trains agents to sound natural, not salesy; Yilmazer built $50–100K/month in ad revenue on a laid-back, informational tone.</p>
+          <div class="src">Modern Design &amp; Style · Nest Seekers</div>
+        </div>
+        <div class="platform-card">
+          <div class="plat-name">LinkedIn</div>
+          <h3>An Open Lane</h3>
+          <p>Most luxury residential agents underinvest here. It's the highest-credibility channel for relocating executives and referral partners — a direct match for Glice's commercial background and 360° network.</p>
+          <div class="src">Industry commentary, commercial &amp; luxury RE</div>
+        </div>
+        <div class="platform-card">
+          <div class="plat-name">TikTok</div>
+          <h3>Undervalued Reach</h3>
+          <p>Distribution favors relevance over follower count. Heider (3.7M followers) teases rather than narrates; completion-rate bar rose to ~70% in 2026. No competitor reviewed offers trilingual content — Glice's fluency is unclaimed ground.</p>
+          <div class="src">Placester · Noseberry Digitals (Coldwell Banker data)</div>
+        </div>
+      </div>
+      <p class="sec-lede" style="margin-top:24px;">Headline stat driving the strategy: <strong style="color:var(--navy)">73% of affluent buyers</strong> say social media has influenced a specific dream-home purchase, with Instagram, YouTube and TikTok at near parity (44–45% each) — luxury buyers are already platform-agnostic, so the site and content system had to be too.</p>
+    </div>
+
+    <div style="margin-top:56px;">
+      <div class="tag-label" style="margin-bottom:16px;">UX &amp; Audience Research — Who the Design Has to Work For</div>
+      <div class="grid-3">
+        <div class="persona-card"><div class="idx">01</div><h3>Relocating Executives &amp; Remote-Wealth Buyers</h3><p>Leaving high-tax states for Florida; comparing Miami, Fort Lauderdale and Palm Beach side by side. Need fast, credible neighborhood and market comparisons.</p></div>
+        <div class="persona-card"><div class="idx">02</div><h3>Latin American &amp; International Buyers</h3><p>Portuguese/Spanish-speaking cash buyers active in Brickell, Sunny Isles and Aventura. Need native-language content and a broker fluent in cross-border transactions.</p></div>
+        <div class="persona-card"><div class="idx">03</div><h3>Palm Beach Expansion Clients</h3><p>Boca Raton, Delray Beach, West Palm Beach, Palm Beach Gardens &amp; Jupiter buyers, served through the New York/Palm Beach partnership. Need proof Glice's expertise extends beyond Miami.</p></div>
+        <div class="persona-card"><div class="idx">04</div><h3>Commercial &amp; Investment Buyers</h3><p>Evaluating income-producing and commercial property tri-county, plus opportunistic Tampa/Orlando investment. Need data-forward content, not lifestyle marketing.</p></div>
+        <div class="persona-card"><div class="idx">05</div><h3>Downsizing / Move-Up Sellers</h3><p>Long-time South Florida homeowners weighing a sale. Need home-value context and quality-of-life comparisons across neighborhoods.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 DEFINE ============ -->
+<section id="define" style="background:var(--cream);">
+  <div class="wrap">
+    <div class="sec-num">02 — Define</div>
+    <h2 class="sec-title">Identifying the Gap</h2>
+    <p class="sec-lede">Research made the core problem clear: Glice's public identity and digital presence hadn't caught up to the substance of her business, her marketing materials were split across two names mid-transition, and her strongest competitors were winning on repeatable systems rather than one-off content.</p>
+    <div class="problem-block" style="margin-top:36px;">
+      <p class="statement">"Glice Lima Parente has spent 15 years building tri-county reach, trilingual fluency and a genuine 360° service network — but she's marketing under a name and a site that don't yet reflect any of it. A slight rebrand to 'Glice Lima' needs a digital presence built to match, not just a new logo."</p>
+      <div class="gap-list">
+        <div class="gap-item"><div class="tag-label">Gap 01</div><p>Marketing materials are currently split across two names — the live site says "Glice Parente," while the new logo, wireframe and homepage concepts already use "Glice Lima" — an inconsistent identity mid-transition.</p><p style="font-size:11.5px;margin-top:10px;color:#B85C5C;">Audit evidence: live site branding, meta tags and social handles all still read "Glice Parente."</p></div>
+        <div class="gap-item"><div class="tag-label">Gap 02</div><p>A single-platform, Instagram-only footprint doesn't match how platform-agnostic luxury buyers actually shop across Instagram, YouTube, LinkedIn and TikTok.</p><p style="font-size:11.5px;margin-top:10px;color:#B85C5C;">Audit evidence: current site links only Instagram, Facebook &amp; LinkedIn — no YouTube or TikTok presence.</p></div>
+        <div class="gap-item"><div class="tag-label">Gap 03</div><p>No site structure exists to carry three counties, three languages, and eleven+ neighborhoods without duplicating effort or diluting local SEO.</p><p style="font-size:11.5px;margin-top:10px;color:#B85C5C;">Audit evidence: 14 listings, almost all Miami-Dade; English/Portuguese only, no Spanish; zero county or neighborhood navigation.</p></div>
+        <div class="gap-item"><div class="tag-label">Gap 04</div><p>Top local competitors win with named, repeatable formats and status-marking systems — Glice's site and content need the same institutionalized structure, not isolated assets.</p><p style="font-size:11.5px;margin-top:10px;color:#B85C5C;">Audit evidence: static WordPress posts with no IDX feed, no market-report capture, no repeatable content system in place.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 PLAN ============ -->
+<section id="plan">
+  <div class="wrap">
+    <div class="sec-num">03 — Plan</div>
+    <h2 class="sec-title">Building the Brand Refresh &amp; Marketing Plan</h2>
+    <p class="sec-lede">This is a slight rebrand, not a reinvention: the name simplifies and the visual identity refreshes, but the license, the relationships and the 15-year track record carry forward unchanged. The gap analysis became a plan built on four pillars, translated directly into the site's core structure so every page has a clear job.</p>
+
+    <div class="scope-grid">
+      <div class="scope-col changing">
+        <div class="tag-label">What's Changing</div>
+        <ul>
+          <li>Public name: <b>Glice Parente</b> → <b>Glice Lima</b></li>
+          <li>Visual identity refreshed to the navy &amp; gold skyline mark</li>
+          <li>Site rebuilt around the four pillars below, with a real tri-county, trilingual structure</li>
+          <li>Domain, social handles and collateral consolidated under one consistent name</li>
+        </ul>
+      </div>
+      <div class="scope-col staying">
+        <div class="tag-label">What's Staying the Same</div>
+        <ul>
+          <li><b>Glice Lima Parente</b> remains her legal and licensed name</li>
+          <li>15 years of experience, client relationships and referral network carry forward as-is</li>
+          <li>Existing testimonials and past sales history remain valid and reusable</li>
+          <li>Brokerage license, affiliations and credentials are unaffected</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pillar-grid" style="margin-top:36px;">
+      <div class="pillar-card"><div class="n">01</div><h3>Authority</h3><p>15 years of residential &amp; commercial market knowledge, demonstrated through consistent, high-production content.</p></div>
+      <div class="pillar-card"><div class="n">02</div><h3>Access</h3><p>English, Portuguese &amp; Spanish fluency opening the door to North American, Latin American and international buyers.</p></div>
+      <div class="pillar-card"><div class="n">03</div><h3>360° Service</h3><p>A curated bench of mortgage, legal, title, accounting, building and design professionals — offer to move-in, friction-free.</p></div>
+      <div class="pillar-card"><div class="n">04</div><h3>Reach</h3><p>A growing footprint across Instagram, YouTube, LinkedIn &amp; TikTok, plus investment content for Tampa and Orlando.</p></div>
+    </div>
+    <div class="tag-label" style="margin-top:44px;">Resulting Website Core Structure</div>
+    <div class="site-map">
+      <span>Home</span><span>Featured Listings</span><span>Neighborhood Guides</span><span>The Lima Network</span>
+      <span>Investment Corridor</span><span>Market Reports</span><span>About / Press</span><span>Contact</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 IDEATE — WIREFRAMES ============ -->
+<section id="ideate" style="background:var(--cream);">
+  <div class="wrap">
+    <div class="sec-num">04 — Ideate &amp; Design</div>
+    <h2 class="sec-title">Low-Fidelity Wireframes</h2>
+    <p class="sec-lede">With the site structure defined, a clickable low-fidelity wireframe mapped every screen and interaction before any visual design began — testing information architecture and content priority first.</p>
+    <div class="frame-block" style="margin-top:36px;">
+      <div class="browser-chrome"><span></span><span></span><span></span></div>
+      <div class="frame-preview" data-w="1400" data-h="1500">
+        <div class="frame-inner"><iframe src="Glice_Lima_Clickable_Wireframe_1.html" title="Glice Lima wireframe — home"></iframe></div>
+      </div>
+      <div class="frame-caption">
+        <h3>Home Screen — Clickable Wireframe</h3>
+        <p>Grayscale, annotated structure used to agree on content and hierarchy before design: full-bleed hero video, live IDX-fed featured listings, county navigation, 360° services teaser, testimonials/press, and a market-report opt-in.</p>
+      </div>
+    </div>
+    <div class="wf-list">
+      <div><b>Hero</b>Drone footage, Miami → Palm Beach, with the positioning line "15 Years Guiding South Florida's Buyers and Sellers."</div>
+      <div><b>Featured Listings</b>Live IDX widget pulling MLS-flagged listings, residential + commercial mix.</div>
+      <div><b>Explore by County</b>Miami-Dade, Broward &amp; Palm Beach as the primary navigation frame for 11+ neighborhoods.</div>
+      <div><b>360° Services</b>Icon strip linking to the Network page — mortgage, legal, title, trades, design.</div>
+      <div><b>Testimonials + Press</b>Client quotes paired with media logos for third-party credibility.</div>
+      <div><b>Market Report Opt-In</b>Email capture routed to CRM, tagged by language and county.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 DESIGN + PROTOTYPE ============ -->
+<section id="design">
+  <div class="wrap">
+    <div class="sec-num">05 — Design &amp; Prototype</div>
+    <h2 class="sec-title">High-Fidelity Concepts for Review</h2>
+    <p class="sec-lede">Once the structure was validated, the wireframe was translated into three high-fidelity homepage directions — same content and brand system, each testing a different layout and a different use of the brand's navy as a background color to highlight key sections.</p>
+    <div class="concept-grid">
+      <div>
+        <div class="browser-chrome"><span></span><span></span><span></span></div>
+        <div class="frame-preview" data-w="1440" data-h="1500">
+          <div class="frame-inner"><iframe src="Glice_Lima_Homepage_V1.html" title="Homepage concept V1"></iframe></div>
+        </div>
+        <div class="frame-caption"><h3>Concept V1 — Full-Bleed Navy Hero</h3><p>Navy anchors the hero and the "Explore by County" band; an editorial, asymmetric listings grid and a gold market-report band close the page.</p></div>
+      </div>
+      <div>
+        <div class="browser-chrome"><span></span><span></span><span></span></div>
+        <div class="frame-preview" data-w="1440" data-h="1500">
+          <div class="frame-inner"><iframe src="Glice_Lima_Homepage_V2.html" title="Homepage concept V2"></iframe></div>
+        </div>
+        <div class="frame-caption"><h3>Concept V2 — Split-Screen, Navy Bookend</h3><p>An asymmetric split hero pairs a solid navy panel with property photography; navy returns for the services band and the closing CTA, framing the page top and bottom.</p></div>
+      </div>
+      <div>
+        <div class="browser-chrome"><span></span><span></span><span></span></div>
+        <div class="frame-preview" data-w="1440" data-h="1500">
+          <div class="frame-inner"><iframe src="Glice_Lima_Homepage_V3.html" title="Homepage concept V3"></iframe></div>
+        </div>
+        <div class="frame-caption"><h3>Concept V3 — Color-Blocked, Navy-Dominant</h3><p>A solid navy header and light, airy hero set up bold navy bands for county coverage and a testimonial spotlight — the most navy-forward of the three.</p></div>
+      </div>
+    </div>
+
+    <div style="margin-top:60px;">
+      <div class="tag-label">Clickable Prototype</div>
+      <h2 class="sec-title" style="font-size:28px;margin-top:8px;">From Static Screens to a Click-Through Flow</h2>
+      <p class="sec-lede">The same wireframe file doubles as the clickable prototype used in stakeholder review: every card, nav link and CTA is wired to its destination screen, so reviewers can click through the real navigation logic rather than looking at flat images.</p>
+      <div class="flow-row">
+        <span class="step">Home</span><span class="arrow">→</span><span class="step">Featured Listings</span><span class="arrow">→</span><span class="step">Listing Detail</span>
+      </div>
+      <div class="flow-row">
+        <span class="step">Home</span><span class="arrow">→</span><span class="step">Explore by County</span><span class="arrow">→</span><span class="step">Neighborhood Detail</span>
+      </div>
+      <div class="flow-row">
+        <span class="step">Home</span><span class="arrow">→</span><span class="step">The Lima Network</span>
+        <span class="arrow" style="margin-left:18px;">·</span>
+        <span class="step">Home</span><span class="arrow">→</span><span class="step">Contact</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 VALIDATE ============ -->
+<section id="validate" class="validate-band">
+  <div class="wrap">
+    <div class="sec-num" style="color:var(--gold-light);">06 — Validate</div>
+    <h2 class="sec-title">UX Research Plan — Testing the Recommended Design</h2>
+    <p class="sec-lede">Before development starts, the recommended homepage direction needs to be validated with real buyers against the same personas that shaped the plan — not just reviewed internally.</p>
+
+    <div class="tag-label" style="margin-top:40px;color:var(--gold-light);">Research Questions</div>
+    <div class="rq-list">
+      <div><span>01</span>Do repeat and referral clients who know her as "Glice Parente" still recognize and trust "Glice Lima" as the same person?</div>
+      <div><span>02</span>Can visitors identify Glice's differentiators — 15 years, trilingual, 360° network, tri-county coverage — within 10 seconds of landing?</div>
+      <div><span>03</span>Can each target persona complete core conversion tasks (find a listing, request the market report, contact Glice) unassisted?</div>
+      <div><span>04</span>Does the county/neighborhood navigation model make sense to buyers unfamiliar with South Florida geography?</div>
+      <div><span>05</span>Is the EN/PT/ES language selector noticed and used appropriately by non-English-dominant participants?</div>
+    </div>
+
+    <div class="round-grid">
+      <div class="round-card">
+        <div class="tag-label">Round 1 · Unmoderated</div>
+        <h3>Concept Preference Test</h3>
+        <ul>
+          <li>5-second first-impression test across Concepts V1 / V2 / V3</li>
+          <li>First-click test toward "View Listings" and "Contact Glice"</li>
+          <li>Measures: clarity of value prop, perceived luxury/trust, click accuracy</li>
+        </ul>
+        <div class="meta-line">n = 15–20 · Maze / UsabilityHub · 48-hour field window</div>
+      </div>
+      <div class="round-card">
+        <div class="tag-label">Round 2 · Moderated</div>
+        <h3>Task-Based Usability Testing</h3>
+        <ul>
+          <li>Find a home for sale in Delray Beach under $3M</li>
+          <li>Locate the professional network / find a recommended mortgage broker</li>
+          <li>Switch the site to Portuguese or Spanish</li>
+          <li>Sign up for the quarterly market report</li>
+          <li>Contact Glice about a commercial property</li>
+        </ul>
+        <div class="meta-line">n = 8, mapped to the 5 buyer personas · 60-min sessions, Zoom + Lookback</div>
+      </div>
+    </div>
+
+    <div class="metric-row">
+      <div class="m"><b>≥80%</b><span>Task Success Rate</span></div>
+      <div class="m"><b>≥75</b><span>SUS Usability Score</span></div>
+      <div class="m"><b>0 Critical</b><span>Blocking Issues at Sign-Off</span></div>
+    </div>
+
+    <div class="timeline">
+      <div class="t"><b>Week 1</b><span>Recruit &amp; field Round 1 preference test; synthesize concept direction.</span></div>
+      <div class="t"><b>Week 2</b><span>Recruit Round 2 participants against the 5 personas; finalize task script.</span></div>
+      <div class="t"><b>Week 2–3</b><span>Run moderated sessions on the selected design + clickable prototype.</span></div>
+      <div class="t"><b>Week 3</b><span>Synthesize findings, prioritize fixes, sign off before development handoff.</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <img src="img/logo-GliceLima-001.jpg" alt="Glice Lima">
+    <p>Brand Refresh — Design Process Case Study · 2026–2027 Business Growth Plan · Prepared August 2026</p>
+  </div>
+</footer>
+
+<script>
+  function sizeFrames(){
+    document.querySelectorAll('.frame-preview').forEach(function(box){
+      var inner = box.querySelector('.frame-inner');
+      var iframe = box.querySelector('iframe');
+      var w = parseInt(box.getAttribute('data-w'),10);
+      var h = parseInt(box.getAttribute('data-h'),10);
+      iframe.style.width = w+'px';
+      iframe.style.height = h+'px';
+      var scale = box.clientWidth / w;
+      inner.style.transform = 'scale('+scale+')';
+      inner.style.width = w+'px';
+      inner.style.height = h+'px';
+    });
+  }
+  window.addEventListener('load', sizeFrames);
+  window.addEventListener('resize', sizeFrames);
+  setTimeout(sizeFrames, 300);
+</script>
+
+</body>
+</html>
